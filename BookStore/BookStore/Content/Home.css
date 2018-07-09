@@ -1,0 +1,109 @@
+﻿.glyphicon {
+    margin-right: 5px;
+}
+
+.thumbnail {
+    margin-bottom: 20px;
+    padding: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+}
+
+.item.list-group-item {
+    float: none;
+    width: 100%;
+    background-color: #fff;
+    margin-bottom: 5px;
+}
+
+    .item.list-group-item:nth-of-type(odd):hover, .item.list-group-item:hover {
+        background: #428bca;
+    }
+
+    .item.list-group-item .list-group-image {
+        margin-right: 10px;
+    }
+
+    .item.list-group-item .thumbnail {
+        margin-bottom: 0;
+    }
+
+    .item.list-group-item .caption {
+        padding: 9px 9px 0 9px;
+    }
+
+    .item.list-group-item:nth-of-type(odd) {
+        background: #eeeeee;
+    }
+
+    .item.list-group-item:before, .item.list-group-item:after {
+        display: table;
+        content: " ";
+    }
+
+    .item.list-group-item img {
+        float: left;
+    }
+
+    .item.list-group-item:after {
+        clear: both;
+    }
+
+.list-group-item-text {
+    margin: 0 0 11px;
+}
+
+.carousel-control {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    width: 45px;
+    height: 45px;
+    margin-top: -20px;
+    font-weight: 100;
+    line-height: 30px;
+    color: #ffffff;
+    text-align: center;
+    background: #222222;
+    border: 3px solid #ffffff;
+    -webkit-border-radius: 23px;
+    -moz-border-radius: 23px;
+    border-radius: 23px;
+    opacity: 1;
+    filter: alpha(opacity=50);
+}
+
+    .carousel-control.right {
+        left: auto;
+        right: 15px;
+    }
+
+    .carousel-control:hover {
+        color: #ffffff;
+        text-decoration: none;
+        background-color:aquamarine;
+        filter: alpha(opacity=90);
+    }
+.glyphicon-chevron-left:before, .glyphicon-chevron-right:before {
+    color:black;
+}
+/* Reposition the controls slightly */
+a.right.carousel-control {
+    font-size: 50px;
+    padding-left: 3px;
+    right: -34px;
+}
+a.left.carousel-control {
+    font-size: 50px;
+    padding-left: -3px;
+    left: -35px;
+}
+fieldset {
+    padding: 10px;
+    border: 2px #666 solid;
+    border-radius: 2px;
+}
+legend{
+    width:auto;
+}

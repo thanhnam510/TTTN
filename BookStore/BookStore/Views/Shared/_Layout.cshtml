@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/Menu.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/Home.css" rel="stylesheet" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand", Style = "color:White;" });
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="nav-item">
+                        <a class="nav-link" id="1" href="#">Liên hệ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Features</a>
+                    </li>
+                    <li class="dropdown dropdown-large">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                        <ul class="dropdown-menu dropdown-menu-large row">
+                            <li class="col-sm-3">
+                                <ul>
+                                    <li class="dropdown-header">Thể loại sách</li>
+                                    <li><a href="#">Anh văn</a></li>
+                                    <li><a href="#">Sách giáo khoa</a></li>
+                                    <li><a href="#">Example</a></li>
+                                    <li><a href="#">Aligninment options</a></li>
+                                    <li><a href="#">Headers</a></li>
+                                    <li><a href="#">Disabled menu items</a></li>
+                                </ul>
+                            </li>
+                            <li class="col-sm-3">
+                                <ul>
+                                    <li class="dropdown-header"><br /></li>
+                                    <li><a href="#">Basic example</a></li>
+                                    <li><a href="#">Button toolbar</a></li>
+                                    <li><a href="#">Sizing</a></li>
+                                    <li><a href="#">Nesting</a></li>
+                                    <li><a href="#">Vertical variation</a></li>
+                                    <li><a href="#">Single button dropdowns</a></li>
+                                </ul>
+                            </li>
+                            <li class="col-sm-3">
+                                <ul>
+                                    <li class="dropdown-header"><br /></li>
+                                    <li><a href="#">Basic example</a></li>
+                                    <li><a href="#">Sizing</a></li>
+                                    <li><a href="#">Checkboxes and radio addons</a></li>
+                                    <li><a href="#">Tabs</a></li>
+                                    <li><a href="#">Pills</a></li>
+                                    <li><a href="#">Justified</a></li>
+                                </ul>
+                            </li>
+                            <li class="col-sm-3">
+                                <ul>
+                                    <li class="dropdown-header"><br /></li>
+                                    <li><a href="#">Default navbar</a></li>
+                                    <li><a href="#">Buttons</a></li>
+                                    <li><a href="#">Text</a></li>
+                                    <li><a href="#">Non-nav links</a></li>
+                                    <li><a href="#">Component alignment</a></li>
+                                    <li><a href="#">Fixed to top</a></li>
+                                    <li><a href="#">Fixed to bottom</a></li>
+                                    <li><a href="#">Static top</a></li>
+                                    <li><a href="#">Inverted navbar</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="search">
+                        <div class="col-lg-6">
+                            <form action="https://www.google.com/">
+                                <label for="search" class="sr-only">Search</label>
+                                <input type="text" placeholder="search" class="search-input" name="search">
+                                <button type="submit">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </button>
+                            </form>
+                        </div>
+                        <div class="col-lg-6 search-select">
+                            <select class="type-of-search header-search-input form-control search-select" name="type">
+                                <option value="name" selected="selected">Theo tên truyện</option>
+                                <option value="author">Theo tác giả</option>
+                            </select>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer >
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script>
+        function xpand() {
+            $('#srch').css({ "width": "300px" });
+        };
+        function shorten() {
+            $('#srch').css({ "width": "100%" });
+        }
+    </script>
+    <style>
+
+    </style>
+</body>
+</html>

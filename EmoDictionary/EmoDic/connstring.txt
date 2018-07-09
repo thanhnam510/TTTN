@@ -1,0 +1,1 @@
+﻿Data Source = NAM-PC\NAM;Initial Catalog = Emo_Dictionary; Persist Security Info=True;User ID = sa; Password=123
