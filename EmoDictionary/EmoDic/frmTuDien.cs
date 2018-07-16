@@ -21,6 +21,9 @@ namespace EmoDic
         private void EmotionDictionary_View_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'edDS.DAC_TRUNG_NGU_NGHIA' table. You can move, or remove it, as needed.
+            dAC_TRUNG_CAM_XUCTableAdapter.Connection.ConnectionString = Program.connStr;
+            dAC_TRUNG_NGU_NGHIATableAdapter.Connection.ConnectionString = Program.connStr;
+           tsTA.Connection.ConnectionString = Program.connStr;
             this.dAC_TRUNG_NGU_NGHIATableAdapter.Fill(this.edDS.DAC_TRUNG_NGU_NGHIA);
             // TODO: This line of code loads data into the 'edDS.DAC_TRUNG_CAM_XUC' table. You can move, or remove it, as needed.
             this.dAC_TRUNG_CAM_XUCTableAdapter.Fill(this.edDS.DAC_TRUNG_CAM_XUC);

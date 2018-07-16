@@ -22,9 +22,10 @@ namespace EmoDic
         private void Form1_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'edDS.TRONG_SO' table. You can move, or remove it, as needed.
-            
+
             // TODO: This line of code loads data into the 'edDS.DAC_TRUNG_CAM_XUC' table. You can move, or remove it, as needed.
             // TODO: This line of code loads data into the 'emo_DictionaryDataSet.DAC_TRUNG_NGU_NGHIA' table. You can move, or remove it, as needed.
+            dtnnTA.Connection.ConnectionString = Program.connStr;
             this.dtnnTA.Fill(this.edDS.DAC_TRUNG_NGU_NGHIA);
 
             before = bf.Controls.OfType<CheckBox>().ToList<CheckBox>();
