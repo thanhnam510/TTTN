@@ -28,9 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTuDien));
-            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
+            this.barManager1 = new DevExpress.XtraBars.BarManager();
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.btnXoa = new DevExpress.XtraBars.BarButtonItem();
             this.btnRefresh = new DevExpress.XtraBars.BarButtonItem();
@@ -39,18 +38,24 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.edDS = new EmoDic.Emo_DictionaryDataSet();
-            this.tdcxBS = new System.Windows.Forms.BindingSource(this.components);
-            this.tuDienCamXucTableAdapter = new EmoDic.Emo_DictionaryDataSetTableAdapters.TuDienCamXucTableAdapter();
+            this.tsBS = new System.Windows.Forms.BindingSource();
+            this.tsTA = new EmoDic.Emo_DictionaryDataSetTableAdapters.TRONG_SOTableAdapter();
             this.tableAdapterManager = new EmoDic.Emo_DictionaryDataSetTableAdapters.TableAdapterManager();
-            this.tuDienCamXucGridControl = new DevExpress.XtraGrid.GridControl();
+            this.dAC_TRUNG_CAM_XUCBindingSource = new System.Windows.Forms.BindingSource();
+            this.dAC_TRUNG_CAM_XUCTableAdapter = new EmoDic.Emo_DictionaryDataSetTableAdapters.DAC_TRUNG_CAM_XUCTableAdapter();
+            this.dAC_TRUNG_NGU_NGHIABindingSource = new System.Windows.Forms.BindingSource();
+            this.dAC_TRUNG_NGU_NGHIATableAdapter = new EmoDic.Emo_DictionaryDataSetTableAdapters.DAC_TRUNG_NGU_NGHIATableAdapter();
+            this.dAC_TRUNG_CAM_XUCGridControl = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.colTU_CAM_XUC = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colTRONG_SO = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colhat_giong = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colEID = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colTHUC_THE_CAM_XUC = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colHAT_GIONG = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.edDS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tdcxBS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tuDienCamXucGridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tsBS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dAC_TRUNG_CAM_XUCBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dAC_TRUNG_NGU_NGHIABindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dAC_TRUNG_CAM_XUCGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -106,15 +111,15 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(800, 24);
+            this.barDockControlTop.Size = new System.Drawing.Size(819, 24);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 450);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 385);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(800, 0);
+            this.barDockControlBottom.Size = new System.Drawing.Size(819, 0);
             // 
             // barDockControlLeft
             // 
@@ -122,119 +127,106 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 426);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 361);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(800, 24);
+            this.barDockControlRight.Location = new System.Drawing.Point(819, 24);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 426);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 361);
             // 
             // edDS
             // 
             this.edDS.DataSetName = "Emo_DictionaryDataSet";
             this.edDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // tdcxBS
+            // tsBS
             // 
-            this.tdcxBS.DataMember = "TuDienCamXuc";
-            this.tdcxBS.DataSource = this.edDS;
+            this.tsBS.DataMember = "TRONG_SO";
+            this.tsBS.DataSource = this.edDS;
             // 
-            // tuDienCamXucTableAdapter
+            // tsTA
             // 
-            this.tuDienCamXucTableAdapter.ClearBeforeFill = true;
+            this.tsTA.ClearBeforeFill = true;
             // 
             // tableAdapterManager
             // 
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager.Dac_TaTableAdapter = null;
-            this.tableAdapterManager.TuDienCamXucTableAdapter = this.tuDienCamXucTableAdapter;
+            this.tableAdapterManager.DAC_TRUNG_CAM_XUCTableAdapter = null;
+            this.tableAdapterManager.DAC_TRUNG_NGU_NGHIATableAdapter = null;
+            this.tableAdapterManager.TRONG_SOTableAdapter = this.tsTA;
             this.tableAdapterManager.UpdateOrder = EmoDic.Emo_DictionaryDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
-            // tuDienCamXucGridControl
+            // dAC_TRUNG_CAM_XUCBindingSource
             // 
-            this.tuDienCamXucGridControl.DataSource = this.tdcxBS;
-            this.tuDienCamXucGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tuDienCamXucGridControl.Location = new System.Drawing.Point(0, 24);
-            this.tuDienCamXucGridControl.MainView = this.gridView1;
-            this.tuDienCamXucGridControl.MenuManager = this.barManager1;
-            this.tuDienCamXucGridControl.Name = "tuDienCamXucGridControl";
-            this.tuDienCamXucGridControl.Size = new System.Drawing.Size(800, 426);
-            this.tuDienCamXucGridControl.TabIndex = 8;
-            this.tuDienCamXucGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.dAC_TRUNG_CAM_XUCBindingSource.DataMember = "DAC_TRUNG_CAM_XUC";
+            this.dAC_TRUNG_CAM_XUCBindingSource.DataSource = this.edDS;
+            // 
+            // dAC_TRUNG_CAM_XUCTableAdapter
+            // 
+            this.dAC_TRUNG_CAM_XUCTableAdapter.ClearBeforeFill = true;
+            // 
+            // dAC_TRUNG_NGU_NGHIABindingSource
+            // 
+            this.dAC_TRUNG_NGU_NGHIABindingSource.DataMember = "DAC_TRUNG_NGU_NGHIA";
+            this.dAC_TRUNG_NGU_NGHIABindingSource.DataSource = this.edDS;
+            // 
+            // dAC_TRUNG_NGU_NGHIATableAdapter
+            // 
+            this.dAC_TRUNG_NGU_NGHIATableAdapter.ClearBeforeFill = true;
+            // 
+            // dAC_TRUNG_CAM_XUCGridControl
+            // 
+            this.dAC_TRUNG_CAM_XUCGridControl.DataSource = this.dAC_TRUNG_CAM_XUCBindingSource;
+            this.dAC_TRUNG_CAM_XUCGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dAC_TRUNG_CAM_XUCGridControl.Location = new System.Drawing.Point(0, 24);
+            this.dAC_TRUNG_CAM_XUCGridControl.MainView = this.gridView1;
+            this.dAC_TRUNG_CAM_XUCGridControl.MenuManager = this.barManager1;
+            this.dAC_TRUNG_CAM_XUCGridControl.Name = "dAC_TRUNG_CAM_XUCGridControl";
+            this.dAC_TRUNG_CAM_XUCGridControl.Size = new System.Drawing.Size(819, 361);
+            this.dAC_TRUNG_CAM_XUCGridControl.TabIndex = 17;
+            this.dAC_TRUNG_CAM_XUCGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
             // 
             // gridView1
             // 
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.colTU_CAM_XUC,
-            this.colTRONG_SO,
-            this.colhat_giong});
-            this.gridView1.GridControl = this.tuDienCamXucGridControl;
+            this.colEID,
+            this.colTHUC_THE_CAM_XUC,
+            this.colHAT_GIONG});
+            this.gridView1.GridControl = this.dAC_TRUNG_CAM_XUCGridControl;
             this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsBehavior.Editable = false;
-            this.gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
-            this.gridView1.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
-            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.colTU_CAM_XUC, DevExpress.Data.ColumnSortOrder.Ascending)});
-            this.gridView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gridView1_KeyDown);
             // 
-            // colTU_CAM_XUC
+            // colEID
             // 
-            this.colTU_CAM_XUC.AppearanceCell.Options.UseTextOptions = true;
-            this.colTU_CAM_XUC.AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.colTU_CAM_XUC.AppearanceHeader.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.colTU_CAM_XUC.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.colTU_CAM_XUC.AppearanceHeader.Options.UseBackColor = true;
-            this.colTU_CAM_XUC.AppearanceHeader.Options.UseFont = true;
-            this.colTU_CAM_XUC.AppearanceHeader.Options.UseTextOptions = true;
-            this.colTU_CAM_XUC.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.colTU_CAM_XUC.Caption = "Emotion";
-            this.colTU_CAM_XUC.FieldName = "TU_CAM_XUC";
-            this.colTU_CAM_XUC.Name = "colTU_CAM_XUC";
-            this.colTU_CAM_XUC.Visible = true;
-            this.colTU_CAM_XUC.VisibleIndex = 0;
+            this.colEID.FieldName = "EID";
+            this.colEID.Name = "colEID";
+            this.colEID.Visible = true;
+            this.colEID.VisibleIndex = 0;
             // 
-            // colTRONG_SO
+            // colTHUC_THE_CAM_XUC
             // 
-            this.colTRONG_SO.AppearanceCell.Options.UseTextOptions = true;
-            this.colTRONG_SO.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.colTRONG_SO.AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.colTRONG_SO.AppearanceHeader.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.colTRONG_SO.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.colTRONG_SO.AppearanceHeader.Options.UseBackColor = true;
-            this.colTRONG_SO.AppearanceHeader.Options.UseFont = true;
-            this.colTRONG_SO.AppearanceHeader.Options.UseTextOptions = true;
-            this.colTRONG_SO.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.colTRONG_SO.Caption = "Weight";
-            this.colTRONG_SO.FieldName = "TRONG_SO";
-            this.colTRONG_SO.Name = "colTRONG_SO";
-            this.colTRONG_SO.Visible = true;
-            this.colTRONG_SO.VisibleIndex = 1;
+            this.colTHUC_THE_CAM_XUC.FieldName = "THUC_THE_CAM_XUC";
+            this.colTHUC_THE_CAM_XUC.Name = "colTHUC_THE_CAM_XUC";
+            this.colTHUC_THE_CAM_XUC.Visible = true;
+            this.colTHUC_THE_CAM_XUC.VisibleIndex = 1;
             // 
-            // colhat_giong
+            // colHAT_GIONG
             // 
-            this.colhat_giong.AppearanceCell.Options.UseTextOptions = true;
-            this.colhat_giong.AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.colhat_giong.AppearanceHeader.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.colhat_giong.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.colhat_giong.AppearanceHeader.Options.UseBackColor = true;
-            this.colhat_giong.AppearanceHeader.Options.UseFont = true;
-            this.colhat_giong.AppearanceHeader.Options.UseTextOptions = true;
-            this.colhat_giong.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.colhat_giong.Caption = "Seed";
-            this.colhat_giong.FieldName = "hat_giong";
-            this.colhat_giong.Name = "colhat_giong";
-            this.colhat_giong.Visible = true;
-            this.colhat_giong.VisibleIndex = 2;
+            this.colHAT_GIONG.FieldName = "HAT_GIONG";
+            this.colHAT_GIONG.Name = "colHAT_GIONG";
+            this.colHAT_GIONG.Visible = true;
+            this.colHAT_GIONG.VisibleIndex = 2;
             // 
             // frmTuDien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.tuDienCamXucGridControl);
+            this.ClientSize = new System.Drawing.Size(819, 385);
+            this.Controls.Add(this.dAC_TRUNG_CAM_XUCGridControl);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
@@ -244,8 +236,10 @@
             this.Load += new System.EventHandler(this.EmotionDictionary_View_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.edDS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tdcxBS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tuDienCamXucGridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tsBS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dAC_TRUNG_CAM_XUCBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dAC_TRUNG_NGU_NGHIABindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dAC_TRUNG_CAM_XUCGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -261,15 +255,19 @@
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
         private DevExpress.XtraBars.BarButtonItem btnXoa;
-        private System.Windows.Forms.BindingSource tdcxBS;
-        private Emo_DictionaryDataSet edDS;
-        private Emo_DictionaryDataSetTableAdapters.TuDienCamXucTableAdapter tuDienCamXucTableAdapter;
-        private Emo_DictionaryDataSetTableAdapters.TableAdapterManager tableAdapterManager;
         private DevExpress.XtraBars.BarButtonItem btnRefresh;
-        private DevExpress.XtraGrid.GridControl tuDienCamXucGridControl;
+        private System.Windows.Forms.BindingSource tsBS;
+        private Emo_DictionaryDataSet edDS;
+        private Emo_DictionaryDataSetTableAdapters.TRONG_SOTableAdapter tsTA;
+        private Emo_DictionaryDataSetTableAdapters.TableAdapterManager tableAdapterManager;
+        private System.Windows.Forms.BindingSource dAC_TRUNG_CAM_XUCBindingSource;
+        private Emo_DictionaryDataSetTableAdapters.DAC_TRUNG_CAM_XUCTableAdapter dAC_TRUNG_CAM_XUCTableAdapter;
+        private System.Windows.Forms.BindingSource dAC_TRUNG_NGU_NGHIABindingSource;
+        private Emo_DictionaryDataSetTableAdapters.DAC_TRUNG_NGU_NGHIATableAdapter dAC_TRUNG_NGU_NGHIATableAdapter;
+        private DevExpress.XtraGrid.GridControl dAC_TRUNG_CAM_XUCGridControl;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
-        private DevExpress.XtraGrid.Columns.GridColumn colTU_CAM_XUC;
-        private DevExpress.XtraGrid.Columns.GridColumn colTRONG_SO;
-        private DevExpress.XtraGrid.Columns.GridColumn colhat_giong;
+        private DevExpress.XtraGrid.Columns.GridColumn colEID;
+        private DevExpress.XtraGrid.Columns.GridColumn colTHUC_THE_CAM_XUC;
+        private DevExpress.XtraGrid.Columns.GridColumn colHAT_GIONG;
     }
 }

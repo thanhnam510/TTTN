@@ -29,7 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.Label tHUC_THELabel;
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnWatch = new System.Windows.Forms.Button();
+            this.btnXtract = new System.Windows.Forms.Button();
             this.aft = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.checkAllA = new System.Windows.Forms.CheckBox();
@@ -48,45 +51,87 @@
             this.b2 = new System.Windows.Forms.CheckBox();
             this.b1 = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.ttCb = new System.Windows.Forms.ComboBox();
+            this.dtnnBS = new System.Windows.Forms.BindingSource(this.components);
+            this.edDS = new EmoDic.Emo_DictionaryDataSet();
+            this.btnThemWS = new System.Windows.Forms.Button();
             this.spnW = new DevExpress.XtraEditors.SpinEdit();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnThemWOS = new System.Windows.Forms.Button();
             this.alert = new System.Windows.Forms.Label();
-            this.btnAdd = new System.Windows.Forms.Button();
             this.seed = new System.Windows.Forms.Label();
             this.txtSeed = new System.Windows.Forms.TextBox();
-            this.ed_DS = new EmoDic.Emo_DictionaryDataSet();
-            this.tdcxBS = new System.Windows.Forms.BindingSource(this.components);
-            this.tuDienCamXucTableAdapter = new EmoDic.Emo_DictionaryDataSetTableAdapters.TuDienCamXucTableAdapter();
+            this.btnThemTTYN = new System.Windows.Forms.Button();
+            this.dtnnTA = new EmoDic.Emo_DictionaryDataSetTableAdapters.DAC_TRUNG_NGU_NGHIATableAdapter();
             this.tableAdapterManager = new EmoDic.Emo_DictionaryDataSetTableAdapters.TableAdapterManager();
-            this.btnWatch = new System.Windows.Forms.Button();
-            this.btnXtract = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.alert2lb = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtMA = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtTTYN = new System.Windows.Forms.TextBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            tHUC_THELabel = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.aft.SuspendLayout();
             this.panel1.SuspendLayout();
             this.bf.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtnnBS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.edDS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spnW.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ed_DS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tdcxBS)).BeginInit();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // tHUC_THELabel
+            // 
+            tHUC_THELabel.AutoSize = true;
+            tHUC_THELabel.Location = new System.Drawing.Point(34, 30);
+            tHUC_THELabel.Name = "tHUC_THELabel";
+            tHUC_THELabel.Size = new System.Drawing.Size(95, 13);
+            tHUC_THELabel.TabIndex = 8;
+            tHUC_THELabel.Text = "Thực thể ý nghĩa :";
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnWatch);
+            this.groupBox1.Controls.Add(this.btnXtract);
             this.groupBox1.Controls.Add(this.aft);
             this.groupBox1.Controls.Add(this.bf);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(0);
-            this.groupBox1.Size = new System.Drawing.Size(788, 166);
+            this.groupBox1.Size = new System.Drawing.Size(792, 151);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
+            // btnWatch
+            // 
+            this.btnWatch.Location = new System.Drawing.Point(649, 44);
+            this.btnWatch.Name = "btnWatch";
+            this.btnWatch.Size = new System.Drawing.Size(111, 23);
+            this.btnWatch.TabIndex = 2;
+            this.btnWatch.Text = "Xem tử điển";
+            this.btnWatch.UseVisualStyleBackColor = true;
+            this.btnWatch.Click += new System.EventHandler(this.btnWatch_Click);
+            // 
+            // btnXtract
+            // 
+            this.btnXtract.Location = new System.Drawing.Point(649, 104);
+            this.btnXtract.Name = "btnXtract";
+            this.btnXtract.Size = new System.Drawing.Size(111, 23);
+            this.btnXtract.TabIndex = 3;
+            this.btnXtract.Text = "Rút trích";
+            this.btnXtract.UseVisualStyleBackColor = true;
+            this.btnXtract.Click += new System.EventHandler(this.btnXtract_Click);
+            // 
             // aft
             // 
+            this.aft.Controls.Add(this.checkBox2);
+            this.aft.Controls.Add(this.checkBox1);
             this.aft.Controls.Add(this.panel1);
             this.aft.Controls.Add(this.a5);
             this.aft.Controls.Add(this.a4);
@@ -96,7 +141,7 @@
             this.aft.Dock = System.Windows.Forms.DockStyle.Left;
             this.aft.Location = new System.Drawing.Point(294, 14);
             this.aft.Name = "aft";
-            this.aft.Size = new System.Drawing.Size(321, 152);
+            this.aft.Size = new System.Drawing.Size(321, 137);
             this.aft.TabIndex = 6;
             this.aft.TabStop = false;
             this.aft.Text = "Sau";
@@ -199,7 +244,7 @@
             this.bf.Dock = System.Windows.Forms.DockStyle.Left;
             this.bf.Location = new System.Drawing.Point(0, 14);
             this.bf.Name = "bf";
-            this.bf.Size = new System.Drawing.Size(294, 152);
+            this.bf.Size = new System.Drawing.Size(294, 137);
             this.bf.TabIndex = 5;
             this.bf.TabStop = false;
             this.bf.Text = "Trước";
@@ -258,10 +303,10 @@
             this.b4.CheckState = System.Windows.Forms.CheckState.Checked;
             this.b4.Location = new System.Drawing.Point(12, 112);
             this.b4.Name = "b4";
-            this.b4.Size = new System.Drawing.Size(57, 17);
+            this.b4.Size = new System.Drawing.Size(53, 17);
             this.b4.TabIndex = 5;
             this.b4.Tag = "3";
-            this.b4.Text = "cực kỳ";
+            this.b4.Text = "cực kì";
             this.b4.UseVisualStyleBackColor = true;
             // 
             // b3
@@ -305,20 +350,55 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.button1);
+            this.groupBox2.Controls.Add(tHUC_THELabel);
+            this.groupBox2.Controls.Add(this.ttCb);
+            this.groupBox2.Controls.Add(this.btnThemWS);
             this.groupBox2.Controls.Add(this.spnW);
             this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(this.btnUpdate);
+            this.groupBox2.Controls.Add(this.btnThemWOS);
             this.groupBox2.Controls.Add(this.alert);
-            this.groupBox2.Controls.Add(this.btnAdd);
             this.groupBox2.Controls.Add(this.seed);
             this.groupBox2.Controls.Add(this.txtSeed);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox2.Location = new System.Drawing.Point(0, 166);
+            this.groupBox2.Location = new System.Drawing.Point(0, 151);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(788, 173);
+            this.groupBox2.Size = new System.Drawing.Size(792, 149);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Thêm từ điển";
+            // 
+            // ttCb
+            // 
+            this.ttCb.DataSource = this.dtnnBS;
+            this.ttCb.DisplayMember = "THUC_THE";
+            this.ttCb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ttCb.FormattingEnabled = true;
+            this.ttCb.Location = new System.Drawing.Point(37, 52);
+            this.ttCb.Name = "ttCb";
+            this.ttCb.Size = new System.Drawing.Size(160, 21);
+            this.ttCb.TabIndex = 9;
+            this.ttCb.ValueMember = "ID";
+            // 
+            // dtnnBS
+            // 
+            this.dtnnBS.DataMember = "DAC_TRUNG_NGU_NGHIA";
+            this.dtnnBS.DataSource = this.edDS;
+            // 
+            // edDS
+            // 
+            this.edDS.DataSetName = "Emo_DictionaryDataSet";
+            this.edDS.EnforceConstraints = false;
+            this.edDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // btnThemWS
+            // 
+            this.btnThemWS.Location = new System.Drawing.Point(294, 91);
+            this.btnThemWS.Name = "btnThemWS";
+            this.btnThemWS.Size = new System.Drawing.Size(152, 23);
+            this.btnThemWS.TabIndex = 8;
+            this.btnThemWS.Text = "Thêm";
+            this.btnThemWS.UseVisualStyleBackColor = true;
+            this.btnThemWS.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // spnW
             // 
@@ -327,7 +407,7 @@
             0,
             0,
             0});
-            this.spnW.Location = new System.Drawing.Point(589, 56);
+            this.spnW.Location = new System.Drawing.Point(640, 53);
             this.spnW.Name = "spnW";
             this.spnW.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -340,21 +420,21 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(525, 55);
+            this.label1.Location = new System.Drawing.Point(636, 31);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 19);
+            this.label1.Size = new System.Drawing.Size(62, 19);
             this.label1.TabIndex = 6;
-            this.label1.Text = "Weight :";
+            this.label1.Text = "Trọng số";
             // 
-            // btnUpdate
+            // btnThemWOS
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(489, 91);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(152, 23);
-            this.btnUpdate.TabIndex = 5;
-            this.btnUpdate.Text = "Thêm không seed";
-            this.btnUpdate.UseVisualStyleBackColor = true;
-            this.btnUpdate.Click += new System.EventHandler(this.update_Click);
+            this.btnThemWOS.Location = new System.Drawing.Point(489, 91);
+            this.btnThemWOS.Name = "btnThemWOS";
+            this.btnThemWOS.Size = new System.Drawing.Size(152, 23);
+            this.btnThemWOS.TabIndex = 5;
+            this.btnThemWOS.Text = "Thêm không seed";
+            this.btnThemWOS.UseVisualStyleBackColor = true;
+            this.btnThemWOS.Click += new System.EventHandler(this.update_Click);
             // 
             // alert
             // 
@@ -366,91 +446,136 @@
             this.alert.Size = new System.Drawing.Size(0, 19);
             this.alert.TabIndex = 4;
             // 
-            // btnAdd
-            // 
-            this.btnAdd.Location = new System.Drawing.Point(98, 91);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(157, 23);
-            this.btnAdd.TabIndex = 2;
-            this.btnAdd.Text = "Thêm với seed";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.add_Click);
-            // 
             // seed
             // 
             this.seed.AutoSize = true;
             this.seed.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.seed.Location = new System.Drawing.Point(63, 55);
+            this.seed.Location = new System.Drawing.Point(227, 26);
             this.seed.Name = "seed";
-            this.seed.Size = new System.Drawing.Size(38, 19);
+            this.seed.Size = new System.Drawing.Size(92, 19);
             this.seed.TabIndex = 1;
-            this.seed.Text = "Từ : ";
+            this.seed.Text = "Từ cảm xúc:  ";
             // 
             // txtSeed
             // 
-            this.txtSeed.Location = new System.Drawing.Point(120, 53);
+            this.txtSeed.Location = new System.Drawing.Point(231, 52);
             this.txtSeed.Name = "txtSeed";
             this.txtSeed.Size = new System.Drawing.Size(375, 21);
             this.txtSeed.TabIndex = 0;
             // 
-            // ed_DS
+            // btnThemTTYN
             // 
-            this.ed_DS.DataSetName = "Emo_DictionaryDataSet";
-            this.ed_DS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.btnThemTTYN.Location = new System.Drawing.Point(294, 95);
+            this.btnThemTTYN.Name = "btnThemTTYN";
+            this.btnThemTTYN.Size = new System.Drawing.Size(126, 23);
+            this.btnThemTTYN.TabIndex = 2;
+            this.btnThemTTYN.Text = "Thêm ";
+            this.btnThemTTYN.UseVisualStyleBackColor = true;
+            this.btnThemTTYN.Click += new System.EventHandler(this.add_Click);
             // 
-            // tdcxBS
+            // dtnnTA
             // 
-            this.tdcxBS.DataMember = "TuDienCamXuc";
-            this.tdcxBS.DataSource = this.ed_DS;
-            // 
-            // tuDienCamXucTableAdapter
-            // 
-            this.tuDienCamXucTableAdapter.ClearBeforeFill = true;
+            this.dtnnTA.ClearBeforeFill = true;
             // 
             // tableAdapterManager
             // 
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager.Dac_TaTableAdapter = null;
-            this.tableAdapterManager.TuDienCamXucTableAdapter = this.tuDienCamXucTableAdapter;
+            this.tableAdapterManager.DAC_TRUNG_CAM_XUCTableAdapter = null;
+            this.tableAdapterManager.DAC_TRUNG_NGU_NGHIATableAdapter = this.dtnnTA;
+            this.tableAdapterManager.TRONG_SOTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = EmoDic.Emo_DictionaryDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
-            // btnWatch
+            // groupBox3
             // 
-            this.btnWatch.Location = new System.Drawing.Point(159, 362);
-            this.btnWatch.Name = "btnWatch";
-            this.btnWatch.Size = new System.Drawing.Size(175, 23);
-            this.btnWatch.TabIndex = 2;
-            this.btnWatch.Text = "Xem tử điển";
-            this.btnWatch.UseVisualStyleBackColor = true;
-            this.btnWatch.Click += new System.EventHandler(this.btnWatch_Click);
+            this.groupBox3.Controls.Add(this.alert2lb);
+            this.groupBox3.Controls.Add(this.label3);
+            this.groupBox3.Controls.Add(this.txtMA);
+            this.groupBox3.Controls.Add(this.label2);
+            this.groupBox3.Controls.Add(this.txtTTYN);
+            this.groupBox3.Controls.Add(this.btnThemTTYN);
+            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox3.Location = new System.Drawing.Point(0, 300);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(792, 241);
+            this.groupBox3.TabIndex = 4;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Thêm thực thể ý nghĩa";
             // 
-            // btnXtract
+            // alert2lb
             // 
-            this.btnXtract.Location = new System.Drawing.Point(440, 362);
-            this.btnXtract.Name = "btnXtract";
-            this.btnXtract.Size = new System.Drawing.Size(175, 23);
-            this.btnXtract.TabIndex = 3;
-            this.btnXtract.Text = "Rút trích";
-            this.btnXtract.UseVisualStyleBackColor = true;
-            this.btnXtract.Click += new System.EventHandler(this.btnXtract_Click);
+            this.alert2lb.AutoSize = true;
+            this.alert2lb.Location = new System.Drawing.Point(107, 17);
+            this.alert2lb.Name = "alert2lb";
+            this.alert2lb.Size = new System.Drawing.Size(0, 13);
+            this.alert2lb.TabIndex = 6;
             // 
-            // button1
+            // label3
             // 
-            this.button1.Location = new System.Drawing.Point(294, 91);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(152, 23);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Thêm 1 từ không seed";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(103, 42);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(83, 19);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Mã thực thể";
+            // 
+            // txtMA
+            // 
+            this.txtMA.Location = new System.Drawing.Point(107, 68);
+            this.txtMA.Name = "txtMA";
+            this.txtMA.Size = new System.Drawing.Size(172, 21);
+            this.txtMA.TabIndex = 4;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(295, 42);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(63, 19);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Thực thể";
+            // 
+            // txtTTYN
+            // 
+            this.txtTTYN.Location = new System.Drawing.Point(297, 68);
+            this.txtTTYN.Name = "txtTTYN";
+            this.txtTTYN.Size = new System.Drawing.Size(375, 21);
+            this.txtTTYN.TabIndex = 2;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Checked = true;
+            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox1.Location = new System.Drawing.Point(93, 68);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(44, 17);
+            this.checkBox1.TabIndex = 18;
+            this.checkBox1.Tag = "2";
+            this.checkBox1.Text = "quá";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Checked = true;
+            this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox2.Location = new System.Drawing.Point(93, 90);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(44, 17);
+            this.checkBox2.TabIndex = 19;
+            this.checkBox2.Tag = "2";
+            this.checkBox2.Text = "ghê";
+            this.checkBox2.UseVisualStyleBackColor = true;
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(788, 397);
-            this.Controls.Add(this.btnXtract);
-            this.Controls.Add(this.btnWatch);
+            this.ClientSize = new System.Drawing.Size(792, 435);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -469,9 +594,11 @@
             this.panel2.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtnnBS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.edDS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.spnW.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ed_DS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tdcxBS)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -480,13 +607,9 @@
 
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnThemTTYN;
         private System.Windows.Forms.Label seed;
         private System.Windows.Forms.TextBox txtSeed;
-        private Emo_DictionaryDataSet ed_DS;
-        private System.Windows.Forms.BindingSource tdcxBS;
-        private Emo_DictionaryDataSetTableAdapters.TuDienCamXucTableAdapter tuDienCamXucTableAdapter;
-        private Emo_DictionaryDataSetTableAdapters.TableAdapterManager tableAdapterManager;
         private System.Windows.Forms.GroupBox aft;
         private System.Windows.Forms.GroupBox bf;
         private System.Windows.Forms.CheckBox a5;
@@ -501,7 +624,7 @@
         private System.Windows.Forms.CheckBox b2;
         private System.Windows.Forms.CheckBox b1;
         private System.Windows.Forms.Label alert;
-        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Button btnThemWOS;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.CheckBox checkAllA;
         private System.Windows.Forms.Panel panel2;
@@ -510,7 +633,20 @@
         private DevExpress.XtraEditors.SpinEdit spnW;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnXtract;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnThemWS;
+        private Emo_DictionaryDataSet edDS;
+        private System.Windows.Forms.BindingSource dtnnBS;
+        private Emo_DictionaryDataSetTableAdapters.DAC_TRUNG_NGU_NGHIATableAdapter dtnnTA;
+        private Emo_DictionaryDataSetTableAdapters.TableAdapterManager tableAdapterManager;
+        private System.Windows.Forms.ComboBox ttCb;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtTTYN;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtMA;
+        private System.Windows.Forms.Label alert2lb;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox checkBox2;
     }
 }
 
