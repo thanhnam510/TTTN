@@ -6,7 +6,7 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/Menu.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/Menu.css" rel="stylesheet" />
     <link href="~/Content/Home.css" rel="stylesheet" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
 </head>
@@ -30,7 +30,7 @@
                         <a class="nav-link" href="#">Features</a>
                     </li>
                     <li class="dropdown dropdown-large">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
                         <ul class="dropdown-menu dropdown-menu-large row">
                             <li class="col-sm-3">
                                 <ul>
@@ -106,22 +106,12 @@
         @RenderBody()
         <hr />
         <footer >
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p class="bottom">&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
     </div>
-
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
-    <script>
-        function xpand() {
-            $('#srch').css({ "width": "300px" });
-        };
-        function shorten() {
-            $('#srch').css({ "width": "100%" });
-        }
-    </script>
-    <style>
 
-    </style>
 </body>
 </html>

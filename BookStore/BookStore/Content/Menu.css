@@ -118,9 +118,3 @@ button {
                 padding: 3px 15px !important;
             }
     }
-@media (min-width: 768px){
-    .navbar-right .dropdown-menu {
-        right: 18%;
-        left: auto;
-    }
-}

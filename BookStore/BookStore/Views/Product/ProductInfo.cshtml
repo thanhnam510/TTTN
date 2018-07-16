@@ -1,0 +1,162 @@
+﻿
+@{
+    ViewBag.Title = "ProductInfo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<form class="forminfo">
+    <fieldset>
+        <div class="col-lg-4">
+            <img class="product-image img-responsive main" src="https://vcdn.tikicdn.com/cache/200x200/ts/product/cf/f9/5e/31faa41dfe6feae3b7303bbb1e36db27.jpg" alt="">
+        </div>
+        <div class="col-lg-8 info">
+            <div class="row">
+                <h2 id="bookname">Bốn Chàng Trai Cùng Nhau Đi Du Lịch</h2>
+            </div>
+            <div class="row">
+                <p>
+                    <div>Tác giả: Yuriko Mamiya</div>
+                    <div>Thể loại: </div>
+                    <div>Nhà xuất bản:</div>
+                    <div>Ngày bán: </div>
+                </p>
+                <p>
+                    <h3 class="price-sale">71.400 ₫</h3>
+                </p>
+            </div>
+            <div class="row">
+                <h2>66% đánh giá tích cực</h2>
+            </div>
+        </div>
+    </fieldset>
+    <fieldset>
+        <div class="row">
+            <h2 id="ContentTitle">Giới thiệu</h2>
+        </div>
+        <div class="row">
+            <!--sau này ghi nội dung rồi tách chuổi ở ~ chổ xuống hàng-->
+            <pre> 
+Bốn Chàng Trai Cùng Nhau Đi Du Lịch
+Mashima – một anh chàng thật thà và thụ động.
+Shigeta – một nhà nghiên cứu thường thường bậc trung, đã có một đời vợ.
+Nakasugi – một anh chàng luôn bị cô bạn gái kiểm soát, có ưu điểm là dễ gây thiện cảm cho người đối diện.
+Và Saiki – Một anh chàng cực kì đẹp trai nhưng tính khí lạ đời.
+Không phải bạn bè cũng chẳng đặc biệt thân thích, vậy mà bốn con người ấy lại đồng hành cùng nhau trên những chuyến đi. 
+Qua mỗi chuyến đi họ trở nên thân thiết hơn nhưng vẫn luôn cố gắng giữ một khoảng cách, không can thiệp quá sâu vào sự riêng tư của những người bạn đồng hành nhưng vẫn luôn sẵn sàng đưa tay giúp đỡ, an ủi lẫn nhau.
+Cuốn sách để lại cho người đọc một cảm giác vô cùng dễ chịu.
+</pre>
+        </div>
+    </fieldset>
+</form>
+<div class="row suggest">
+    <h3>Có thể bạn muốn</h3>
+    <form>
+        <fieldset>
+            <div class="row">
+                <div class="row-fluid">
+                    @{
+                        var b = 0;
+                        while (b < 5)
+                        {
+                            b++;
+                            <div class="itm col-xs-2 col-md-2">
+                                <div class="product-box-list">
+                                    <div class="product-box-list">
+                                        <div tpl="" rel="" class="product-item ">
+                                            <a data-id="1621207" data-score="" href="https://tiki.vn/bon-chang-trai-cung-nhau-di-du-lich-p1621207.html?src=category-page" title="Bốn Chàng Trai Cùng Nhau Đi Du Lịch" class="">
+                                                <span class="image">
+                                                    <img class="product-image img-responsive center" src="https://vcdn.tikicdn.com/cache/200x200/ts/product/cf/f9/5e/31faa41dfe6feae3b7303bbb1e36db27.jpg" alt="">
+                                                </span>
+                                                <div class="info">
+                                                    <span class="title">
+                                                        Bốn Chàng Trai Cùng Nhau Đi Du Lịch
+                                                    </span>
+                                                    <p class="author">Yuriko Mamiya</p>
+                                                    <p>
+                                                        <h4 class="price-sale">71.400 ₫</h4>
+                                                    </p>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        }
+                    }<!--end while-->
+                </div><!--end row-fluid-->
+            </div>
+        </fieldset>
+    </form>
+</div>
+    <style>
+        .forminfo {
+            margin-top: 30px;
+        }
+
+        fieldset {
+            border: 1px solid lightgray;
+            box-shadow: 3px 3px lightgray;
+        }
+
+        .main {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 300px;
+            height: 300px;
+        }
+
+        #ContentTitle {
+            margin-left: 30px;
+        }
+
+        #bookname {
+            color: darkcyan;
+            text-shadow: 2px 2px lightgray;
+        }
+
+        pre {
+            border: none;
+            padding: 0;
+            width: 95%;
+            margin-left: 29px;
+        }
+        .suggest{
+            margin:0;
+            margin-top:30px;
+            
+        }
+        h4.price-sale {
+            text-align: center;
+            color: black;
+        }
+
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .itm {
+            border: 1px solid lightgray;
+            margin-bottom: 10px;
+            margin-left: 32px;
+            box-shadow: none;
+        }
+
+            .itm:hover {
+                box-shadow: 3px 3px 3px 3px lightgray;
+                border: 1px solid black;
+            }
+
+        a {
+            outline: none;
+            color: #2e2d2d;
+        }
+
+            a:hover {
+                color: black;
+                text-decoration: none;
+            }
+
+    </style>
