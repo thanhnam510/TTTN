@@ -9,113 +9,135 @@
 <div class="container col-md-12">
     
     <div id="products" class="row list-group">
-        <fieldset>
-            <legend><a a href="#">New products </a></legend>
-            <div id="myCarousel" class="carousel slide" data-interval="false">
-                <div class="carousel-inner">
-                            @{
-                                for (int i = 0; i < 3; i++)
-                                {
+            <div class="panel with-nav-tabs panel-info">
+                <div class="panel-heading">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#tab1" data-toggle="tab">Hàng mới</a></li>
+                        <li><a href="#tab2" data-toggle="tab">Đánh giá cao</a></li>
+                        <li><a href="#tab3" data-toggle="tab">Primary 3</a></li>
+                    </ul>
+                </div>
+                <div class="panel-body">
+                    <div class="tab-content">
+                        <div class="tab-pane fade in active" id="tab1">
+                            <div class="row-fluid">
+                                @{
                                     var b = 0;
-                                    string a="";
-                                    if (i == 0)
-                                    {
-                                        a = "active";
-                                    }
-                                    <div class="item @a">
-                                        <div class="row-fluid">
-                                            @while (b < 4)
-                                            {
-                                                b++;
-                                                <div class="itm col-xs-2 col-md-2">
-                                                    <div class="product-box-list">
-                                                        <div class="product-box-list">
-                                                            <div tpl="" rel="" class="product-item ">
-                                                                <a data-id="1621207" data-score="" href="https://tiki.vn/bon-chang-trai-cung-nhau-di-du-lich-p1621207.html?src=category-page" title="Bốn Chàng Trai Cùng Nhau Đi Du Lịch" class="">
-                                                                    <span class="image">
-                                                                        <img class="product-image img-responsive center" src="https://vcdn.tikicdn.com/cache/200x200/ts/product/cf/f9/5e/31faa41dfe6feae3b7303bbb1e36db27.jpg" alt="">
-                                                                    </span>
-                                                                    <div class="info">
-                                                                        <span class="title">
-                                                                            Bốn Chàng Trai Cùng Nhau Đi Du Lịch
-                                                                        </span>
-                                                                        <p class="author">Yuriko Mamiya</p>
-                                                                        <p>
-                                                                            <h4 class="price-sale">71.400 ₫</h4>
-                                                                        </p>
-                                                                    </div>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                            </div>
-
-                                                    } <!--end while-->
-                                                </div><!--end row-fluid-->
-                                            </div>
-                                }
-                            }
-                            
-                        </div> <!--end inner-carousel-->
-                        <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
-                        <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
-                    </div> <!--end carousel-->
-        </fieldset>
-    </div>
-    <div id="top-products" class="row list-group">
-        <fieldset>
-            <legend><a href="#">Top products</a></legend>
-            <div id="myCarousel2" class="carousel slide" data-interval="false">
-                <div class="carousel-inner">
-                    @{
-                        for (int i = 0; i < 2; i++)
-                        {
-                            string a = "";
-                            if (i == 0)
-                            {
-                                a = "active";
-                            }
-                            var b = 0;
-                            <div class="item @a">
-                                <div class="row-fluid">
-                                    @while (b < 4)
+                                    while (b < 12)
                                     {
                                         b++;
-                                    <div class="itm col-xs-2 col-md-2">
-                                        <div class="product-box-list">
+                                        <div class="itm col-xs-2 col-md-2">
                                             <div class="product-box-list">
-                                                <div tpl="" rel="" class="product-item ">
-                                                    <a data-id="1621207" data-score="" href="https://tiki.vn/bon-chang-trai-cung-nhau-di-du-lich-p1621207.html?src=category-page" title="Bốn Chàng Trai Cùng Nhau Đi Du Lịch" class="">
-                                                        <span class="image">
-                                                            <img class="product-image img-responsive center" src="https://vcdn.tikicdn.com/cache/200x200/ts/product/cf/f9/5e/31faa41dfe6feae3b7303bbb1e36db27.jpg" alt="">
-                                                        </span>
-                                                        <div class="info">
-                                                            <span class="title">
-                                                                Bốn Chàng Trai Cùng Nhau Đi Du Lịch
+                                                <div class="product-box-list">
+                                                    <div tpl="" rel="" class="product-item ">
+                                                        <a data-id="1621207" data-score="" href="https://tiki.vn/bon-chang-trai-cung-nhau-di-du-lich-p1621207.html?src=category-page" title="Bốn Chàng Trai Cùng Nhau Đi Du Lịch" class="">
+                                                            <span class="image">
+                                                                <img class="product-image img-responsive center" src="https://vcdn.tikicdn.com/cache/200x200/ts/product/cf/f9/5e/31faa41dfe6feae3b7303bbb1e36db27.jpg" alt="">
                                                             </span>
-                                                            <p class="author">Yuriko Mamiya</p>
-                                                            <p>
-                                                                <h4 class="price-sale">71.400 ₫</h4>
-                                                            </p>
-                                                        </div>
-                                                    </a>
+                                                            <div class="info">
+                                                                <span class="title">
+                                                                    Bốn Chàng Trai Cùng Nhau Đi Du Lịch
+                                                                </span>
+                                                                <p class="author">Yuriko Mamiya</p>
+                                                                <p>
+                                                                    <h4 class="price-sale">71.400 ₫</h4>
+                                                                </p>
+                                                            </div>
+                                                        </a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
 
                                     } <!--end while-->
-                                </div><!--end row-fluid-->
-                            </div><!--end item-->
-                        }
-                    }
-                </div> <!--end inner-carousel-->
-                <a class="left carousel-control" href="#myCarousel2" data-slide="prev">‹</a>
-                <a class="right carousel-control" href="#myCarousel2" data-slide="next">›</a>
-            </div> <!--end carousel-->
-        </fieldset>
-    </div> <!--end row-list-group-->
-</div> <!--end container 9 left-->
+
+                                }
+                            </div>
+                            <center>
+                                <button class="btn-info More">Xem thêm</button>
+                            </center>
+                        </div><!--end row-fluid-->
+                        <div class="tab-pane fade in" id="tab2">
+                            <div class="row-fluid">
+                                @{
+                                    b = 0;
+                                    while (b < 12)
+                                    {
+                                        b++;
+                                        <div class="itm col-xs-2 col-md-2">
+                                            <div class="product-box-list">
+                                                <div class="product-box-list">
+                                                    <div tpl="" rel="" class="product-item ">
+                                                        <a data-id="1621207" data-score="" href="https://tiki.vn/bon-chang-trai-cung-nhau-di-du-lich-p1621207.html?src=category-page" title="Bốn Chàng Trai Cùng Nhau Đi Du Lịch" class="">
+                                                            <span class="image">
+                                                                <img class="product-image img-responsive center" src="https://vcdn.tikicdn.com/cache/200x200/ts/product/cf/f9/5e/31faa41dfe6feae3b7303bbb1e36db27.jpg" alt="">
+                                                            </span>
+                                                            <div class="info">
+                                                                <span class="title">
+                                                                    Bốn Chàng Trai Cùng Nhau Đi Du Lịch
+                                                                </span>
+                                                                <p class="author">Yuriko Mamiya</p>
+                                                                <p>
+                                                                    <h4 class="price-sale">71.400 ₫</h4>
+                                                                </p>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    } <!--end while-->
+
+                                }
+                            </div>
+                            <center>
+                                <button class="btn-info More">Xem thêm</button>
+                            </center>
+                        </div><!--end row-fluid-->
+                        <div class="tab-pane fade in" id="tab3">
+                            <div class="row-fluid">
+                                @{
+                                    b = 0;
+                                    while (b < 12)
+                                    {
+                                        b++;
+                                        <div class="itm col-xs-2 col-md-2">
+                                            <div class="product-box-list">
+                                                <div class="product-box-list">
+                                                    <div tpl="" rel="" class="product-item ">
+                                                        <a data-id="1621207" data-score="" href="https://tiki.vn/bon-chang-trai-cung-nhau-di-du-lich-p1621207.html?src=category-page" title="Bốn Chàng Trai Cùng Nhau Đi Du Lịch" class="">
+                                                            <span class="image">
+                                                                <img class="product-image img-responsive center" src="https://vcdn.tikicdn.com/cache/200x200/ts/product/cf/f9/5e/31faa41dfe6feae3b7303bbb1e36db27.jpg" alt="">
+                                                            </span>
+                                                            <div class="info">
+                                                                <span class="title">
+                                                                    Bốn Chàng Trai Cùng Nhau Đi Du Lịch
+                                                                </span>
+                                                                <p class="author">Yuriko Mamiya</p>
+                                                                <p>
+                                                                    <h4 class="price-sale">71.400 ₫</h4>
+                                                                </p>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    } <!--end while-->
+
+                                }
+                            </div>
+                            <center>
+                                <button class="btn-info More">Xem thêm</button>
+                            </center>
+                        </div><!--end row-fluid-->
+                    </div>
+                </div>
+            </div> 
+    </div>
+
 <style>
    h4.price-sale {
         text-align: center;
@@ -157,5 +179,23 @@
     .info {
         border-top: 1px solid lightgray;
     }
+    .nav.nav-tabs {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
 
+    .nav-tabs > li.active > a, 
+    .nav-tabs > li.active > a:hover, 
+    .nav-tabs > li.active > a:focus {
+        border-top:2px solid orange;
+    }
+    .More {
+        color: white;
+        background-color: #29a1da;
+        width: 10%;
+        height: 35px;
+        border-radius: 40px;
+        margin-top: 5px;
+    }
 </style>
