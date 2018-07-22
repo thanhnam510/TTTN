@@ -114,7 +114,7 @@ namespace EmoDic
 
         private void Xtract()
         {
-            string[] sentences_Separators = { ".", "!", "?" };
+            string[] sentences_Separators = { ".", "!", "?","...","\n" };
             string[] phrases_Separators = { ",", ";" };
             string[] sentences = txtA.Text.Split(sentences_Separators, StringSplitOptions.RemoveEmptyEntries);
             string[] words;
@@ -125,35 +125,44 @@ namespace EmoDic
             foreach (String sentence in sentences)
             {
                 pharses = sentence.Split(phrases_Separators, StringSplitOptions.RemoveEmptyEntries);
-                foreach (string pharse in pharses)
+                List<string> temp = new List<string>(); // list tạm chứa ~ đặc trưng cảm xúc.
+
+                // do là rút trích từ phải qua nên phải bắt đầu từ phải qua để không bỏ sót vị ngữ
+                // vd: Nội dung rất hay, thú vị
+                for (int index = pharses.Length-1;index>=0;index--)
                 {
-                    words = pharse.Split(' ');
+                    words = pharses[index].Split(' ');
                     int start = 0;
                     int stop = words.Length;
                     bool isStop = false;
                     string Term = "";
-                    List<string> temp = new List<string>();
+                   
                     while (isStop == false && stop >= 0)
                     {
                         Term = "";
                         for (int i = start; i < stop; i++)
                             Term += words[i] + " ";
                         int ret = findTerm(Term);
-                        if (ret != 0) // neu tu co trong tu dien
+                        if (ret != 0) // nếu có trong database
                         {
-                            if (ret == 1)  // la tu cam xuc
+                            if (ret == 1)  // là đặc trưng cảm xúc
                             {
                                 temp.Add(Term.Trim());
                             }
-                            else // la ngu nghia (ret == 2)
+                            else // la ngữ nghĩa (ret == 2)
                             {
-                                foreach (string t in temp) // ket thuc 1 cau truc cau
+                                // ket thuc 1 cau trúc câu ( chủ ngữ / vị ngữ)
+                                foreach (string t in temp)
                                 {
+                                    // lấy trọng số của các từ cảm xúc của ngữ nghĩa vừa tìm được
                                     TermValues.Add(getWeight(Term.Trim(), t));
+                                    // thêm từ cảm xúc vào mảng các cụm từ
                                     Terms.Add(t.Trim());
                                 }
+                                // thêm ngữ nghĩa vào mảng cụm từ và gáng trọng số tạm -999
                                 Terms.Add(Term.Trim());
                                 TermValues.Add(-999);
+                                // làm mới list tạm để bắt đầu lại 1 cấu trúc câu mới
                                 temp = new List<string>();
                             }
                             if (start == 0) // khong con de rut trich
