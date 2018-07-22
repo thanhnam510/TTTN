@@ -1,0 +1,63 @@
+﻿@model BookStore.SACH
+
+@{
+    ViewBag.Title = "UpdateTour";
+    Layout = "~/Areas/AdminManager/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Cập nhật tour du lịch</h2>
+
+@using (Html.BeginForm("SaveUpdateTour", "TourManager", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+       <!--Form edit tour-->
+<div class="form-horizontal">
+    <h4>Tour</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.MA_SACH)
+
+    <!--Điểm khởi hành-->
+    <div class="form-group">
+        @Html.LabelFor(model => model.TEN_SACH, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.TEN_SACH, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.TEN_SACH, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <!--Điểm đến-->
+    <div class="form-group">
+        @Html.LabelFor(model => model.NOI_DUNG, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.NOI_DUNG, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.NOI_DUNG, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <!--ngày khởi hành-->
+    <div class="form-group">
+        @Html.LabelFor(model => model.GIA, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.GIA, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.GIA, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <!--Mô tả-->
+    <div class="form-group">
+        @Html.Label("Hình ảnh", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="file" name="somename">
+            @Html.ValidationMessageFor(model => model.ANH, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <!--Submit-->
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Quay lại danh sách", "Index")
+</div>

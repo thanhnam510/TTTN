@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4b79eac63877462482700475594bb900" Name="Diagram1" ZoomLevel="68">
+        <EntityTypeShape EntityType="bookModel.ADMIN" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="bookModel.NHA_XUAT_BAN" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="bookModel.SACH" Width="1.5" PointX="0.75" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="bookModel.TAC_GIA" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="bookModel.THE_LOAI" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="bookModel.Y_KIEN" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
+        <AssociationConnector Association="bookModel.FK_Y_KIEN__ANH_GIA_SACH" ManuallyRouted="false" />
+        <AssociationConnector Association="bookModel.SACH_NXB" ManuallyRouted="false" />
+        <AssociationConnector Association="bookModel.SACH_TAC_GIA" ManuallyRouted="false" />
+        <AssociationConnector Association="bookModel.SACH_THE_LOAI" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

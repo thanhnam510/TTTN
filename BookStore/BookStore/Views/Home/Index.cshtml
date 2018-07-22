@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<BookStore.SACH>
 @{
     ViewBag.Title = "Index";
 }
@@ -6,8 +6,7 @@
     $(#myCarousel).carousel(0).addClass('active');
 </script>
 <img src="~/img/9159a7ba710db49.jpg " alt="sách" style="width:100%;height:333px;margin-bottom: 30px;" />
-<div class="container col-md-12">
-    
+<div class="container col-md-12">    
     <div id="products" class="row list-group">
             <div class="panel with-nav-tabs panel-info">
                 <div class="panel-heading">
@@ -20,27 +19,28 @@
                 <div class="panel-body">
                     <div class="tab-content">
                         <div class="tab-pane fade in active" id="tab1">
-                            <div class="row-fluid">
+                            <div class="row-fluid row">
                                 @{
                                     var b = 0;
-                                    while (b < 12)
+                                    foreach (var item in Model)
                                     {
+
                                         b++;
                                         <div class="itm col-xs-2 col-md-2">
                                             <div class="product-box-list">
                                                 <div class="product-box-list">
                                                     <div tpl="" rel="" class="product-item ">
-                                                        <a data-id="1621207" data-score="" href="https://tiki.vn/bon-chang-trai-cung-nhau-di-du-lich-p1621207.html?src=category-page" title="Bốn Chàng Trai Cùng Nhau Đi Du Lịch" class="">
+                                                        <a data-id="@item.MA_SACH" data-score="" href="@Url.Action("ProductInfo", "Product", new { maSach = @item.MA_SACH })" title="@item.TEN_SACH" class="">
                                                             <span class="image">
-                                                                <img class="product-image img-responsive center" src="https://vcdn.tikicdn.com/cache/200x200/ts/product/cf/f9/5e/31faa41dfe6feae3b7303bbb1e36db27.jpg" alt="">
+                                                                <img class="product-image img-responsive center" src="@item.ANH" alt="">
                                                             </span>
-                                                            <div class="info">
+                                                            <div class="info crop">
                                                                 <span class="title">
-                                                                    Bốn Chàng Trai Cùng Nhau Đi Du Lịch
+                                                                    @item.TEN_SACH.
                                                                 </span>
                                                                 <p class="author">Yuriko Mamiya</p>
                                                                 <p>
-                                                                    <h4 class="price-sale">71.400 ₫</h4>
+                                                                    <h4 class="price-sale">@item.GIA</h4>
                                                                 </p>
                                                             </div>
                                                         </a>
@@ -48,37 +48,43 @@
                                                 </div>
                                             </div>
                                         </div>
+                                            if (b == 8)
+                                            {
+                                                break;
+                                            }
 
-                                    } <!--end while-->
-
-                                }
+                                        }
+                                    }
+                                </div>
+                            <div class="row">
+                                <center>
+                                    <button class="btn-info More">Xem thêm</button>
+                                </center>
                             </div>
-                            <center>
-                                <button class="btn-info More">Xem thêm</button>
-                            </center>
                         </div><!--end row-fluid-->
                         <div class="tab-pane fade in" id="tab2">
-                            <div class="row-fluid">
+                            <div class="row-fluid row">
                                 @{
                                     b = 0;
-                                    while (b < 12)
+                                    foreach (var item in Model)
                                     {
+
                                         b++;
                                         <div class="itm col-xs-2 col-md-2">
                                             <div class="product-box-list">
                                                 <div class="product-box-list">
                                                     <div tpl="" rel="" class="product-item ">
-                                                        <a data-id="1621207" data-score="" href="https://tiki.vn/bon-chang-trai-cung-nhau-di-du-lich-p1621207.html?src=category-page" title="Bốn Chàng Trai Cùng Nhau Đi Du Lịch" class="">
+                                                        <a data-id="@item.MA_SACH" data-score="" href="@Url.Action("ProductInfo", "Product", new { maTour =@item.MA_SACH})" title="@item.TEN_SACH" class="">
                                                             <span class="image">
-                                                                <img class="product-image img-responsive center" src="https://vcdn.tikicdn.com/cache/200x200/ts/product/cf/f9/5e/31faa41dfe6feae3b7303bbb1e36db27.jpg" alt="">
+                                                                <img class="product-image img-responsive center" src="@item.ANH" alt="">
                                                             </span>
-                                                            <div class="info">
+                                                            <div class="info crop">
                                                                 <span class="title">
-                                                                    Bốn Chàng Trai Cùng Nhau Đi Du Lịch
+                                                                    @item.TEN_SACH.
                                                                 </span>
                                                                 <p class="author">Yuriko Mamiya</p>
                                                                 <p>
-                                                                    <h4 class="price-sale">71.400 ₫</h4>
+                                                                    <h4 class="price-sale">@item.GIA</h4>
                                                                 </p>
                                                             </div>
                                                         </a>
@@ -86,27 +92,34 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        if (b == 8)
+                                        {
+                                            break;
+                                        }
 
                                     } <!--end while-->
 
                                 }
                             </div>
-                            <center>
-                                <button class="btn-info More">Xem thêm</button>
-                            </center>
+                            <div class="row">
+                                <center>
+                                    <button class="btn-info More">Xem thêm</button>
+                                </center>
+                            </div>
                         </div><!--end row-fluid-->
                         <div class="tab-pane fade in" id="tab3">
-                            <div class="row-fluid">
+                            <div class="row-fluid row">
                                 @{
                                     b = 0;
                                     while (b < 12)
                                     {
+
                                         b++;
                                         <div class="itm col-xs-2 col-md-2">
                                             <div class="product-box-list">
                                                 <div class="product-box-list">
                                                     <div tpl="" rel="" class="product-item ">
-                                                        <a data-id="1621207" data-score="" href="https://tiki.vn/bon-chang-trai-cung-nhau-di-du-lich-p1621207.html?src=category-page" title="Bốn Chàng Trai Cùng Nhau Đi Du Lịch" class="">
+                                                        <a data-id="" data-score="" href="https://tiki.vn/bon-chang-trai-cung-nhau-di-du-lich-p1621207.html?src=category-page" title="Bốn Chàng Trai Cùng Nhau Đi Du Lịch" class="">
                                                             <span class="image">
                                                                 <img class="product-image img-responsive center" src="https://vcdn.tikicdn.com/cache/200x200/ts/product/cf/f9/5e/31faa41dfe6feae3b7303bbb1e36db27.jpg" alt="">
                                                             </span>
@@ -129,17 +142,30 @@
 
                                 }
                             </div>
-                            <center>
-                                <button class="btn-info More">Xem thêm</button>
-                            </center>
+                            <div class="row">
+                                <center>
+                                    <button class="btn-info More">Xem thêm</button>
+                                </center>
+                            </div>
                         </div><!--end row-fluid-->
                     </div>
                 </div>
             </div> 
     </div>
+    </div>
 
 <style>
-   h4.price-sale {
+    .crop {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        width: 100%;
+    }
+
+    ​
+
+    ​
+    h4.price-sale {
         text-align: center;
         color: black;
     }
@@ -148,6 +174,7 @@
         display: block;
         margin-left: auto;
         margin-right: auto;
+        height: 230px;
     }
 
     .itm {
@@ -155,7 +182,8 @@
         margin-bottom: 10px;
         margin-left: 10px;
         margin-right: 10px;
-        box-shadow:none;
+        box-shadow: none;
+        height: 340px;
     }
         .itm:hover {
             box-shadow:   5px 5px 5px darkgray;
