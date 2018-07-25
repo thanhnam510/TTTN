@@ -41,6 +41,9 @@ namespace EmoDic
 
         private void btnRefresh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            this.dAC_TRUNG_NGU_NGHIATableAdapter.Fill(this.edDS.DAC_TRUNG_NGU_NGHIA);
+            this.dAC_TRUNG_CAM_XUCTableAdapter.Fill(this.edDS.DAC_TRUNG_CAM_XUC);
+            this.tsTA.Fill(this.edDS.TRONG_SO);
             //this.tuDienCamXucTableAdapter.Fill(this.edDS.TuDienCamXuc);
         }
 

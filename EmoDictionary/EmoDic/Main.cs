@@ -109,6 +109,7 @@ namespace EmoDic
         {
             int tong = 1;
             int dem = d;
+            int dau = 1;
             try
             {
                 foreach (CheckBox box in before)
@@ -117,10 +118,11 @@ namespace EmoDic
                     {
                         tong++;
                         string emo = box.Text + " " + seed;
-                        short weight = (short)spnW.Value;
-                        weight *= short.Parse(box.Tag.ToString());
+                        int weight = (int)spnW.Value;
+                        dau = weight < 0 ? -1 : 1;
+                        weight += (short.Parse(box.Tag.ToString()))*dau;
                         string id = ttCb.SelectedValue.ToString().Trim();
-                        dem += Add(id, emo, weight, false);
+                        dem += Add(id, emo, (short)weight, false);
                     }
                 }
                 foreach (CheckBox box in after)
@@ -129,10 +131,11 @@ namespace EmoDic
                     {
                         tong++;
                         string emo = seed + " " + box.Text;
-                        short weight = (short)spnW.Value;
-                        weight *= short.Parse(box.Tag.ToString());
+                        int weight = (int)spnW.Value;
+                        dau = weight < 0 ? -1 : 1;
+                        weight += (short.Parse(box.Tag.ToString())) * dau;
                         string id = ttCb.SelectedValue.ToString().Trim();
-                        dem += Add(id, emo, weight, false);
+                        dem += Add(id, emo, (short)weight, false);
                     }
                 }
             }
