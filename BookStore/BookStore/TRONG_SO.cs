@@ -12,14 +12,13 @@ namespace BookStore
     using System;
     using System.Collections.Generic;
     
-    public partial class Y_KIEN
+    public partial class TRONG_SO
     {
-        public int MA_SACH { get; set; }
-        public int MA_Y_KIEN { get; set; }
-        public string NOI_DUNG { get; set; }
-        public string DANH_GIA { get; set; }
-        public System.DateTime NGAY { get; set; }
+        public string ID { get; set; }
+        public long EID { get; set; }
+        public int TRONG_SO1 { get; set; }
     
-        public virtual SACH SACH { get; set; }
+        public virtual DAC_TRUNG_CAM_XUC DAC_TRUNG_CAM_XUC { get; set; }
+        public virtual DAC_TRUNG_NGU_NGHIA DAC_TRUNG_NGU_NGHIA { get; set; }
     }
 }

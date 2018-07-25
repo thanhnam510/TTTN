@@ -55,6 +55,12 @@
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
@@ -214,7 +220,18 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Home.css" />
     <Content Include="Content\Menu.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="EmotionDictionary.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EmotionDictionary.edmx</DependentUpon>
+      <LastGenOutput>EmotionDictionary.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="EmotionDictionary.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EmotionDictionary.edmx</DependentUpon>
+      <LastGenOutput>EmotionDictionary.cs</LastGenOutput>
+    </Content>
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="img\001036.jpg" />
@@ -224,7 +241,7 @@
     <Content Include="img\photo1514606141082-1514606141082-1514690372285.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\carousel.js" />
+    <Content Include="Scripts\Product.js" />
     <Content Include="Areas\AdminManager\Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Areas\AdminManager\Views\HomeAdmin\Create.cshtml" />
     <Content Include="Areas\AdminManager\Views\HomeAdmin\Index.cshtml" />
@@ -287,6 +304,13 @@
       <DependentUpon>Book.edmx</DependentUpon>
       <SubType>Designer</SubType>
     </Content>
+    <EntityDeploy Include="EmotionDictionary.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>EmotionDictionary.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="EmotionDictionary.edmx.diagram">
+      <DependentUpon>EmotionDictionary.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -323,11 +347,33 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="DAC_TRUNG_CAM_XUC.cs">
+      <DependentUpon>EmotionDictionary.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAC_TRUNG_NGU_NGHIA.cs">
+      <DependentUpon>EmotionDictionary.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmotionDictionary.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EmotionDictionary.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmotionDictionary.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EmotionDictionary.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmotionDictionary.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EmotionDictionary.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\BookContext.cs" />
     <Compile Include="Models\BookDetails.cs" />
+    <Compile Include="Models\XtractModule.cs" />
     <Compile Include="NHA_XUAT_BAN.cs">
       <DependentUpon>Book.tt</DependentUpon>
     </Compile>
@@ -340,6 +386,9 @@
     </Compile>
     <Compile Include="THE_LOAI.cs">
       <DependentUpon>Book.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TRONG_SO.cs">
+      <DependentUpon>EmotionDictionary.tt</DependentUpon>
     </Compile>
     <Compile Include="Y_KIEN.cs">
       <DependentUpon>Book.tt</DependentUpon>

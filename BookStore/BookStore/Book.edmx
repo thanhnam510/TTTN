@@ -75,7 +75,7 @@
             <PropertyRef Name="MA_Y_KIEN" />
           </Key>
           <Property Name="MA_SACH" Type="int" Nullable="false" />
-          <Property Name="MA_Y_KIEN" Type="char" MaxLength="100" Nullable="false" />
+          <Property Name="MA_Y_KIEN" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NOI_DUNG" Type="ntext" Nullable="false" />
           <Property Name="DANH_GIA" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="NGAY" Type="datetime" Nullable="false" />
@@ -263,7 +263,7 @@
             <PropertyRef Name="MA_Y_KIEN" />
           </Key>
           <Property Name="MA_SACH" Type="Int32" Nullable="false" />
-          <Property Name="MA_Y_KIEN" Type="String" MaxLength="100" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MA_Y_KIEN" Type="Int32" Nullable="false" />
           <Property Name="NOI_DUNG" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="DANH_GIA" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="NGAY" Type="DateTime" Nullable="false" Precision="3" />
