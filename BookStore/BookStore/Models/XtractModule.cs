@@ -12,6 +12,7 @@ namespace BookStore.Models
         private List<int> G = new List<int>();
         private List<int> N;
         private List<int> P;
+        private string tong_quat = "Sách";
 
         private void Xtract_Load(object sender, EventArgs e)
         {
@@ -50,7 +51,7 @@ namespace BookStore.Models
         }
         private string cal()
         {
-            if(G.Count == 0) 
+            if (G.Count == 0)
                 return "trung lập";
             double cosinNG = Math.Round(cosin(N), 3);
             double cosinPG = Math.Round(cosin(P), 3);
@@ -61,7 +62,7 @@ namespace BookStore.Models
             }
             else
             {
-                return kq > 0 ? "tích cực":"tiêu cực";
+                return kq > 0 ? "tích cực" : "tiêu cực";
             }
         }
 
@@ -95,7 +96,9 @@ namespace BookStore.Models
             {
                 pharses = sentence.Split(phrases_Separators, StringSplitOptions.RemoveEmptyEntries);
                 List<string> temp = new List<string>(); // list tạm chứa ~ đặc trưng cảm xúc.
-
+                string Term = "";
+                
+                List<string> temp2 = new List<string>();
                 // do là rút trích từ phải qua nên phải bắt đầu từ phải qua để không bỏ sót vị ngữ
                 // vd: Nội dung rất hay, thú vị
                 for (int index = pharses.Length - 1; index >= 0; index--)
@@ -104,13 +107,12 @@ namespace BookStore.Models
                     int start = 0;
                     int stop = words.Length;
                     bool isStop = false;
-                    string Term = "";
-
                     while (isStop == false && stop >= 0)
                     {
                         Term = "";
                         for (int i = start; i < stop; i++)
                             Term += words[i] + " ";
+                        Term = Term.Trim();
                         int ret = findTerm(Term);
                         if (ret != 0) // nếu có trong database
                         {
@@ -120,19 +122,23 @@ namespace BookStore.Models
                             }
                             else // la ngữ nghĩa (ret == 2)
                             {
-                                // ket thuc 1 cau trúc câu ( chủ ngữ / vị ngữ)
-                                foreach (string t in temp)
+                                temp2.Add(Term);
+                                if (temp.Count != 0)
                                 {
-                                    // lấy trọng số của các từ cảm xúc của ngữ nghĩa vừa tìm được
-                                    TermValues.Add(getWeight(Term.Trim(), t));
-                                    // thêm từ cảm xúc vào mảng các cụm từ
-                                    Terms.Add(t.Trim());
+                                    foreach (string t in temp)
+                                    {
+                                        // lấy trọng số của các từ cảm xúc của ngữ nghĩa vừa tìm được
+                                        TermValues.Add(getWeight(Term, t));
+                                        // thêm từ cảm xúc vào mảng các cụm từ
+                                        Terms.Add(t);
+                                    }
+                                    // thêm ngữ nghĩa vào mảng cụm từ và gáng trọng số tạm -999
+                                    Terms.Add(Term);
+                                    TermValues.Add(-999);
+                                    // làm mới list tạm để bắt đầu lại 1 cấu trúc câu mới
+                                    temp = new List<string>();
+                                    temp2 = new List<string>();
                                 }
-                                // thêm ngữ nghĩa vào mảng cụm từ và gáng trọng số tạm -999
-                                Terms.Add(Term.Trim());
-                                TermValues.Add(-999);
-                                // làm mới list tạm để bắt đầu lại 1 cấu trúc câu mới
-                                temp = new List<string>();
                             }
                             if (start == 0) // khong con de rut trich
                                 isStop = true;
@@ -155,8 +161,32 @@ namespace BookStore.Models
 
                     }
                 }
+                if (temp.Count != 0 && temp2.Count != 0)
+                {
+                    string NN = temp2[0];
+                    foreach (string t in temp)
+                    {
+                        // lấy trọng số của các từ cảm xúc của ngữ nghĩa vừa tìm được
+                        TermValues.Add(getWeight(NN, t));
+                        // thêm từ cảm xúc vào mảng các cụm từ
+                        Terms.Add(t.Trim());
+                    }
+                    Terms.Add(NN);
+                    TermValues.Add(-999);
+                    continue;
+                }
+                foreach (string t in temp)
+                {
+                    // lấy trọng số của các từ cảm xúc của ngữ nghĩa vừa tìm được
+                    TermValues.Add(getWeight(tong_quat, t));
+                    // thêm từ cảm xúc vào mảng các cụm từ
+                    Terms.Add(t.Trim());
+                }
+
             }
         }
+
+
 
         public string getEvaluate(string vanBan)
         {

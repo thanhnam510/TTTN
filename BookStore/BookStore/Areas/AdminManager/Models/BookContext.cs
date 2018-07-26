@@ -56,10 +56,11 @@ namespace BookStore.Areas.AdminManager.Models
                 
                 THE_LOAI tl = db.THE_LOAI.Where(theloai => theloai.MA_THE_LOAI == matheloai).Select(theloai => theloai).FirstOrDefault();
                 NHA_XUAT_BAN nxb = db.NHA_XUAT_BAN.Where(nxban => nxban.MA_NXB == maNXB).Select(nxban => nxban).FirstOrDefault();
-                TAC_GIA tg = db.TAC_GIA.Where(tacgia => tacgia.TEN_TAC_GIA.Contains("TACGIA")).Select(tgia=>tgia).FirstOrDefault();
+                TAC_GIA tg = db.TAC_GIA.Where(tacgia => tacgia.TEN_TAC_GIA.Contains(TACGIA.Trim())).Select(tgia=>tgia).FirstOrDefault();
                 if(tg == null)
                 {
-                    addAuthor(TACGIA);
+                    addAuthor(TACGIA.Trim());
+                    tg = db.TAC_GIA.Where(tacgia => tacgia.TEN_TAC_GIA.Contains(TACGIA.Trim())).Select(tgia => tgia).FirstOrDefault();
                 }
                 nxb.SACH.Add(book);
                 tg.SACH.Add(book);

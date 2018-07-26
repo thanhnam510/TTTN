@@ -19,7 +19,7 @@ namespace EmoDic
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void Main_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'edDS.TRONG_SO' table. You can move, or remove it, as needed.
 
@@ -250,5 +250,6 @@ namespace EmoDic
             this.tableAdapterManager.UpdateAll(this.edDS);
 
         }
+
     }
 }

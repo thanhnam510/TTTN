@@ -21,7 +21,7 @@ namespace TravelTour1.Areas.AdminManager.Controllers.Home
             List<THE_LOAI> cate = BookContext.getAllCatagories();
             List<NHA_XUAT_BAN> nxbs = BookContext.getAllNXB();
             SelectList cateList = new SelectList(cate, "MA_THE_LOAI", "TEN_THE_LOAI");
-            SelectList NXBList = new SelectList(nxbs, "MA_THE_LOAI", "TEN_THE_LOAI");
+            SelectList NXBList = new SelectList(nxbs, "MA_NXB", "TEN_NXB");
             
             ViewBag.NXBList = NXBList;
             ViewBag.CategoryList = cateList;

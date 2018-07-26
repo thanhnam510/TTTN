@@ -158,14 +158,14 @@ namespace EmoDic
                                 {
                                     foreach (string t in temp)
                                     {
+                                        Terms.Add(Term);
+                                        TermValues.Add(-999);
                                         // lấy trọng số của các từ cảm xúc của ngữ nghĩa vừa tìm được
                                         TermValues.Add(getWeight(Term, t));
                                         // thêm từ cảm xúc vào mảng các cụm từ
                                         Terms.Add(t);
                                     }
                                     // thêm ngữ nghĩa vào mảng cụm từ và gáng trọng số tạm -999
-                                    Terms.Add(Term);
-                                    TermValues.Add(-999);
                                     // làm mới list tạm để bắt đầu lại 1 cấu trúc câu mới
                                     temp = new List<string>();
                                     temp2 = new List<string>();
@@ -195,15 +195,15 @@ namespace EmoDic
                 if (temp.Count != 0 && temp2.Count != 0) 
                 {
                     string NN = temp2[0];
-                     foreach (string t in temp)
+                    Terms.Add(NN);
+                    TermValues.Add(-999);
+                    foreach (string t in temp)
                        {
                             // lấy trọng số của các từ cảm xúc của ngữ nghĩa vừa tìm được
                             TermValues.Add(getWeight(NN, t));
                             // thêm từ cảm xúc vào mảng các cụm từ
                             Terms.Add(t.Trim());
                         }
-                        Terms.Add(NN);
-                        TermValues.Add(-999);
                         continue;
                     }
                     foreach (string t in temp)
