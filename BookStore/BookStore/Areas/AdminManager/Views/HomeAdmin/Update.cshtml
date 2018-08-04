@@ -1,0 +1,112 @@
+﻿@model BookStore.Models.BookDetails
+
+@{
+    ViewBag.Title = "UpdateBook";
+    Layout = "~/Areas/AdminManager/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Cập nhật sách</h2>
+
+@using (Html.BeginForm("SaveUpdateBook", "HomeAdmin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+       <!--Form edit tour-->
+<div class="form-horizontal">
+    <h4>Tour</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.sach.MA_SACH)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.sach.TEN_SACH, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.sach.TEN_SACH, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.sach.TEN_SACH, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+
+        @for (int index = 0; index < Model.tg.Count; index++)
+        {
+            @Html.Label("Tác giả", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.tg[index].TEN_TAC_GIA, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.tg[index].TEN_TAC_GIA, "", new { @class = "text-danger" })
+            </div>
+        }
+        @Html.Label("Tác giả", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.Editor("TACGIA", new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessage("TACGIA", "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="count" data-count="@Model.tl.Count"></div>
+        @for (int index = 0; index < Model.tl.Count; index++)
+        {
+            <div hidden data-MTL="@Model.tl[index].MA_THE_LOAI" id="@index"></div>
+            @Html.Label("Thể loại", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.tl[index].MA_THE_LOAI, (IEnumerable<SelectListItem>)ViewBag.CategoryList,new { @class = "form-control " + @index, style = "width:20%" })
+                @Html.ValidationMessageFor(model => model.tl[index].MA_THE_LOAI, "", new { @class = "text-danger" })
+            </div>
+        }
+        @Html.Label("Thể loại", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("THELOAI", (IEnumerable<SelectListItem>)ViewBag.CategoryList, "Please Select", new { @class = "form-control", style = "width:20%" })
+            @Html.ValidationMessage("THELOAI", "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.Label("NXB", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @{
+                @Html.DropDownListFor(model =>model.nxb.MA_NXB, (IEnumerable<SelectListItem>)ViewBag.NXBList, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model=>model.nxb.MA_NXB, "", new { @class = "text-danger" })
+            }
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.Label("Nội dung", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(model => model.sach.NOI_DUNG, new { @class = "form-control", style = "width: 100%; height:300px;" })
+            @Html.ValidationMessageFor(model => model.sach.NOI_DUNG, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.sach.GIA, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.sach.GIA, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.sach.GIA, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.Label("Hình ảnh", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="file" name="somename">
+            @Html.ValidationMessageFor(model => model.sach.ANH, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Quay lại danh sách", "Index")
+</div>
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script>
+
+    $("document").ready(function () {
+        var a = $('.count').data('count');
+        var i = 0;
+        for (i = 0; i < a; i++) {
+            $('.' + i).val($("#" + i).data('mtl'));
+        }
+    });
+
+</script>

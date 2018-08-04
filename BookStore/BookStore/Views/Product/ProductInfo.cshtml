@@ -1,0 +1,251 @@
+﻿@model BookStore.Models.BookDetails
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "ProductInfo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/ProductInfo.css" rel="stylesheet" />
+<div class="hidden" id="MA_SACH" data-ma_Sach="@Model.sach.MA_SACH">
+</div>
+<form class="forminfo">
+    <fieldset>
+        <div class="col-lg-4">
+            <img class="product-image img-responsive main" src="@Model.sach.ANH" alt="">
+        </div>
+        <div class="col-lg-8 info">
+            <div class="row">
+                <h2 id="bookname">@Model.sach.TEN_SACH</h2>
+            </div>
+            <div class="row">
+                <p>
+                    <div>
+                        Tác giả:
+                        @{
+                            foreach (var item in Model.tg)
+                            {
+                                <a class="author" href="@Url.Action("Index", "Products",new {search = "1?"+item.TEN_TAC_GIA})">@item.TEN_TAC_GIA</a>
+                                <a>&#160;</a>
+                            }
+                        }
+                    </div>
+                    <div>
+                        Thể loại:
+                        @foreach (var item in Model.tl)
+                        {
+                            <a class="author" href="@Url.Action("Index", "Products",new {search = item.TEN_THE_LOAI})">@item.TEN_THE_LOAI</a>
+                            <a>&#160;</a>
+                        }
+                    </div>
+                    <div>Nhà xuất bản:@Model.nxb.TEN_NXB</div>
+                    <div>Ngày bán: @Model.sach.NGAY_BAN.ToShortDateString()</div>
+                </p>
+                <p>
+                    <h3 class="price-sale">@Model.sach.GIA ₫</h3>
+                </p>
+                @{
+                    int danhgiatot = (int)Model.sach.DANH_GIA_TOT;
+                    int tongdanhgia = (int)Model.sach.TONG_DANH_GIA;
+                    double percent = tongdanhgia == 0 ? -1 : Math.Round((danhgiatot * 100.0 / tongdanhgia), 2);
+                    string chuoi = percent == -1 ? "Chưa có đánh giá" : percent + "% đánh giá tích cực";
+                }
+                <p><h2 style="color:#b91d1d">@chuoi</h2></p>
+            </div>
+        </div>
+    </fieldset>
+    <fieldset>
+        <div class="row">
+            <h2 id="ContentTitle"><strong>Nội dung</strong></h2>
+        </div>
+        <div class="row">
+            <!--sau này ghi nội dung rồi tách chuổi ở ~ chổ xuống hàng-->
+            <div class="Noidung">
+                @{
+                    string[] NDs = Model.sach.NOI_DUNG.Split('\n');
+                    foreach (string ND in NDs)
+                    {
+                        <p>@ND</p>
+                    }
+                }
+            </div>
+        </div>
+    </fieldset>
+</form>
+<div class="comment row">
+    <div class="panel with-nav-tabs panel-info">
+        <div class="panel-heading">
+            <center class="row">
+                <p><h2 style="color:#b91d1d">@chuoi</h2></p>
+            </center>
+            <div class="col-sm-offset-0">
+                <ul class="nav navbar-brand nav-tabs-justified menu">
+                    <li class="active"><a href="#tab1" data-toggle="tab" id="select">Bình luận</a></li>
+                    <li><a href="#tab2" data-toggle="tab" id="select" class="positive" onclick="viewPositiveComments()">Đánh giá tích cực(@ViewBag.PositiveCmts.Count)</a></li>
+                    <li><a href="#tab3" data-toggle="tab" id="select">Đánh giá tiêu cực(@ViewBag.NegativeCmts.Count)</a></li>
+                    <li><a href="#tab4" data-toggle="tab" id="select">Đánh giá trung lập(@ViewBag.NeutralCmts.Count)</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="panel-body col-md-offset-0 cmt">
+            <div class="tab-content">
+                <div class="tab-pane fade in active" id="tab1">
+                    <fieldset>
+                        @Html.TextArea("cmt", new { @class = "form-control", style = "width: 100%; height:150px;max-width:100%;margin: 0;", @id = "cmt" })
+                        @Html.ValidationMessage("cmt", "", new { @class = "text-danger" })
+                        <input type="button" id="btnSend" value="Gửi" />
+                        <div id="result"></div>
+                    </fieldset>
+                </div>
+                <div class="tab-pane fade in" id="tab2">
+                    <div class="positive-comment col-md-9">
+                        @{
+
+                            var b = 0;
+                            var dem = 1;
+                            string cl = "p" + dem;
+                            foreach (var item in ViewBag.PositiveCmts)
+                            {
+                                if (b == 10)
+                                {
+                                    b = 0;
+                                    dem++;
+                                    cl = "p" + dem + " hidden";
+                                }
+                                b++;
+                                <fieldset class="@cl">
+                                    <div>
+                                        <p id="y_kien">
+                                            @{
+                                                string[] cmtNDs = item.NOI_DUNG.Split('\n');
+                                                foreach (string ND in cmtNDs)
+                                                {
+                                                <p id="y_kien">
+                                                    @ND
+                                                </p>
+                                            }
+                                            }
+                                            <em id="ngay_gui">@item.NGAY</em>
+                                        </div>
+                                    </fieldset>
+                                }
+                                <center>
+                                    <ul class="pagination P">
+                                        @{
+                                            if (dem != 1)
+                                            {
+
+                                                for (int i = 1; i <= dem; i++)
+                                                {
+                                                    string cls = "Pbtn" + i;
+                                                    if (i == 1)
+                                                    {
+                                                        <li class="active" id="@cls"><a href="javascript:void(0);" onclick="changePPage(@i)">@i</a></li>
+                                                        continue;
+                                                    }
+                                                    <li id="@cls"><a href="javascript:void(0);" onclick="changePPage(@i)">@i</a></li>
+
+                                                }
+                                            }
+                                        }
+                                    </ul>
+                                </center>
+                        }
+                    </div>
+                </div>
+                <div class="tab-pane fade in" id="tab3">
+                    <div class="negative-comment col-md-9">
+                        @{
+                            b = 0;
+                            dem = 1;
+                            cl = "n" + dem;
+                            foreach (var item in ViewBag.NegativeCmts)
+                            {
+                                if (b == 10)
+                                {
+                                    b = 0;
+                                    dem++;
+                                    cl = "n" + dem;
+                                }
+                                b++;
+                                <fieldset class="@cl">
+                                    <div>
+                                        <p id="y_kien">@item.NOI_DUNG</p>
+                                        <em id="ngay_gui">@item.NGAY</em>
+                                    </div>
+                                </fieldset>
+                            }
+                            <center>
+                                <ul class="pagination N">
+                                    @{
+                                        if (dem != 1)
+                                        {
+
+                                            for (int i = 1; i <= dem; i++)
+                                            {
+                                                string cls = "Nbtn" + i;
+                                                if (i == 1)
+                                                {
+                                                    <li class="active" id="@cls"><a href="javascript:void(0);" onclick="changeNPage(@i)">@i</a></li>
+                                                    continue;
+                                                }
+                                                <li id="@cls"><a href="javascript:void(0);" onclick="changeNPage(@i)">@i</a></li>
+                                            }
+                                        }
+                                    }
+                                </ul>
+                            </center>
+                        }
+                    </div>
+                    <!--negative-->
+                </div>
+                <div class="tab-pane fade in" id="tab4">
+                    <div class="neutral-comment col-md-9">
+                        @{
+                            b = 0;
+                            dem = 1;
+                            cl = "neu" + dem;
+                            foreach (var item in ViewBag.NeutralCmts)
+                            {
+                                if (b == 10)
+                                {
+                                    b = 0;
+                                    dem++;
+                                    cl = "neu" + dem;
+                                }
+                                b++;
+                                <fieldset class="@cl">
+                                    <div>
+                                        <p id="y_kien">@item.NOI_DUNG</p>
+                                        <em id="ngay_gui">@item.NGAY</em>
+                                    </div>
+                                </fieldset>
+                            }
+                            <center>
+                                <ul class="pagination Neu">
+                                    @{
+                                        if (dem != 1)
+                                        {
+
+                                            for (int i = 1; i <= dem; i++)
+                                            {
+                                                string cls = "Neubtn" + i;
+                                                if (i == 1)
+                                                {
+                                                    <li class="active" id="@cls"><a href="javascript:void(0);" onclick="changeNeuPage(@i)">@i</a></li>
+                                                    continue;
+                                                }
+                                                <li id="@cls"><a href="javascript:void(0);" onclick="changeNeuPage(@i)">@i</a></li>
+                                            }
+                                        }
+                                    }
+                                </ul>
+                            </center>
+                        }
+                    </div>
+                    <!--negative-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script src="~/Scripts/Product.js"></script>

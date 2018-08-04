@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Emo_DictionaryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DAC_TRUNG_CAM_XUC">
+          <Key>
+            <PropertyRef Name="EID" />
+          </Key>
+          <Property Name="EID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="THUC_THE_CAM_XUC" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="HAT_GIONG" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DAC_TRUNG_NGU_NGHIA">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="THUC_THE" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TRONG_SO">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="EID" />
+          </Key>
+          <Property Name="ID" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="EID" Type="bigint" Nullable="false" />
+          <Property Name="TRONG_SO" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_TRONG_SO_CO_DAC_TRUN">
+          <End Role="DAC_TRUNG_CAM_XUC" Type="Self.DAC_TRUNG_CAM_XUC" Multiplicity="1" />
+          <End Role="TRONG_SO" Type="Self.TRONG_SO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DAC_TRUNG_CAM_XUC">
+              <PropertyRef Name="EID" />
+            </Principal>
+            <Dependent Role="TRONG_SO">
+              <PropertyRef Name="EID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TRONG_SO_CO1_DAC_TRUN">
+          <End Role="DAC_TRUNG_NGU_NGHIA" Type="Self.DAC_TRUNG_NGU_NGHIA" Multiplicity="1" />
+          <End Role="TRONG_SO" Type="Self.TRONG_SO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DAC_TRUNG_NGU_NGHIA">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TRONG_SO">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="SP_LayTrongSo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Thuc_the_y_nghia" Type="nvarchar" Mode="In" />
+          <Parameter Name="Thuc_the_cam_xuc" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SP_TimKiem" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Term" Type="nvarchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="Emo_DictionaryModelStoreContainer">
+          <EntitySet Name="DAC_TRUNG_CAM_XUC" EntityType="Self.DAC_TRUNG_CAM_XUC" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DAC_TRUNG_NGU_NGHIA" EntityType="Self.DAC_TRUNG_NGU_NGHIA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TRONG_SO" EntityType="Self.TRONG_SO" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_TRONG_SO_CO_DAC_TRUN" Association="Self.FK_TRONG_SO_CO_DAC_TRUN">
+            <End Role="DAC_TRUNG_CAM_XUC" EntitySet="DAC_TRUNG_CAM_XUC" />
+            <End Role="TRONG_SO" EntitySet="TRONG_SO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TRONG_SO_CO1_DAC_TRUN" Association="Self.FK_TRONG_SO_CO1_DAC_TRUN">
+            <End Role="DAC_TRUNG_NGU_NGHIA" EntitySet="DAC_TRUNG_NGU_NGHIA" />
+            <End Role="TRONG_SO" EntitySet="TRONG_SO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Emo_DictionaryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="DAC_TRUNG_CAM_XUC">
+          <Key>
+            <PropertyRef Name="EID" />
+          </Key>
+          <Property Name="EID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="THUC_THE_CAM_XUC" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HAT_GIONG" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="TRONG_SO" Relationship="Self.FK_TRONG_SO_CO_DAC_TRUN" FromRole="DAC_TRUNG_CAM_XUC" ToRole="TRONG_SO" />
+        </EntityType>
+        <EntityType Name="DAC_TRUNG_NGU_NGHIA">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="THUC_THE" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="TRONG_SO" Relationship="Self.FK_TRONG_SO_CO1_DAC_TRUN" FromRole="DAC_TRUNG_NGU_NGHIA" ToRole="TRONG_SO" />
+        </EntityType>
+        <EntityType Name="TRONG_SO">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="EID" />
+          </Key>
+          <Property Name="ID" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="EID" Type="Int64" Nullable="false" />
+          <Property Name="TRONG_SO1" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DAC_TRUNG_CAM_XUC" Relationship="Self.FK_TRONG_SO_CO_DAC_TRUN" FromRole="TRONG_SO" ToRole="DAC_TRUNG_CAM_XUC" />
+          <NavigationProperty Name="DAC_TRUNG_NGU_NGHIA" Relationship="Self.FK_TRONG_SO_CO1_DAC_TRUN" FromRole="TRONG_SO" ToRole="DAC_TRUNG_NGU_NGHIA" />
+        </EntityType>
+        <Association Name="FK_TRONG_SO_CO_DAC_TRUN">
+          <End Role="DAC_TRUNG_CAM_XUC" Type="Self.DAC_TRUNG_CAM_XUC" Multiplicity="1" />
+          <End Role="TRONG_SO" Type="Self.TRONG_SO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DAC_TRUNG_CAM_XUC">
+              <PropertyRef Name="EID" />
+            </Principal>
+            <Dependent Role="TRONG_SO">
+              <PropertyRef Name="EID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TRONG_SO_CO1_DAC_TRUN">
+          <End Role="DAC_TRUNG_NGU_NGHIA" Type="Self.DAC_TRUNG_NGU_NGHIA" Multiplicity="1" />
+          <End Role="TRONG_SO" Type="Self.TRONG_SO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DAC_TRUNG_NGU_NGHIA">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TRONG_SO">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Emo_DictionaryEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DAC_TRUNG_CAM_XUC" EntityType="Self.DAC_TRUNG_CAM_XUC" />
+          <EntitySet Name="DAC_TRUNG_NGU_NGHIA" EntityType="Self.DAC_TRUNG_NGU_NGHIA" />
+          <EntitySet Name="TRONG_SO" EntityType="Self.TRONG_SO" />
+          <AssociationSet Name="FK_TRONG_SO_CO_DAC_TRUN" Association="Self.FK_TRONG_SO_CO_DAC_TRUN">
+            <End Role="DAC_TRUNG_CAM_XUC" EntitySet="DAC_TRUNG_CAM_XUC" />
+            <End Role="TRONG_SO" EntitySet="TRONG_SO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TRONG_SO_CO1_DAC_TRUN" Association="Self.FK_TRONG_SO_CO1_DAC_TRUN">
+            <End Role="DAC_TRUNG_NGU_NGHIA" EntitySet="DAC_TRUNG_NGU_NGHIA" />
+            <End Role="TRONG_SO" EntitySet="TRONG_SO" />
+          </AssociationSet>
+          <FunctionImport Name="SP_LayTrongSo" ReturnType="Collection(Int32)">
+            <Parameter Name="Thuc_the_y_nghia" Mode="In" Type="String" />
+            <Parameter Name="Thuc_the_cam_xuc" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_TimKiem" ReturnType="Collection(Int32)">
+            <Parameter Name="Term" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Emo_DictionaryModelStoreContainer" CdmEntityContainer="Emo_DictionaryEntities">
+          <EntitySetMapping Name="DAC_TRUNG_CAM_XUC">
+            <EntityTypeMapping TypeName="Emo_DictionaryModel.DAC_TRUNG_CAM_XUC">
+              <MappingFragment StoreEntitySet="DAC_TRUNG_CAM_XUC">
+                <ScalarProperty Name="EID" ColumnName="EID" />
+                <ScalarProperty Name="THUC_THE_CAM_XUC" ColumnName="THUC_THE_CAM_XUC" />
+                <ScalarProperty Name="HAT_GIONG" ColumnName="HAT_GIONG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DAC_TRUNG_NGU_NGHIA">
+            <EntityTypeMapping TypeName="Emo_DictionaryModel.DAC_TRUNG_NGU_NGHIA">
+              <MappingFragment StoreEntitySet="DAC_TRUNG_NGU_NGHIA">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="THUC_THE" ColumnName="THUC_THE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TRONG_SO">
+            <EntityTypeMapping TypeName="Emo_DictionaryModel.TRONG_SO">
+              <MappingFragment StoreEntitySet="TRONG_SO">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="EID" ColumnName="EID" />
+                <ScalarProperty Name="TRONG_SO1" ColumnName="TRONG_SO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_LayTrongSo" FunctionName="Emo_DictionaryModel.Store.SP_LayTrongSo" />
+          <FunctionImportMapping FunctionImportName="SP_TimKiem" FunctionName="Emo_DictionaryModel.Store.SP_TimKiem" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

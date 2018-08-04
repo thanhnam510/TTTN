@@ -1,0 +1,149 @@
+﻿@model List<BookStore.Models.ProductView>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/Product.js"></script>
+<div class=" col-md-12" style="padding-top:30px;">
+    <div id="products" class=" list-group row">
+        <div class="row-fluid row" style="height:100%">
+            @{
+                if (Model.Count() == 0)
+                {
+                    <h2>Chưa có sản phẩm</h2>
+                    return;
+                }
+                var b = 0;
+                var dem = 1;
+                string cl = "p" + dem;
+                foreach (var item in Model)
+                {
+                    if (b == 12)
+                    {
+                        b = 0;
+                        dem++;
+                        cl = "p" + dem + " hidden";
+                    }
+                    b++;
+                    <div class="itm col-xs-3 col-md-2 @cl">
+                        <div class="product-box-list">
+                            <div class="product-box-list">
+                                <div tpl="" rel="" class="product-item ">
+                                    <a data-id="@item.book.MA_SACH" data-score="" href="@Url.Action("ProductInfo", "Product", new { maSach = @item.book.MA_SACH })" title="@item.book.TEN_SACH" class="">
+                                        <span class="image">
+                                            <img class="product-image img-responsive center" src="@item.book.ANH" alt="">
+                                        </span>
+                                        <div class="info crop">
+                                            <h4>
+                                                <span class="title">
+                                                    @item.book.TEN_SACH.
+                                                </span>
+                                            </h4>
+                                            @{
+                                                string authors = "";
+                                                foreach (var tg in item.book.TAC_GIA)
+                                                {
+                                                    authors += tg.TEN_TAC_GIA + " ";
+
+                                                }
+                                                <p class="author">@authors</p>
+                                            }
+                                            @{
+                                                string chuoi = item.percent == -1 ? "Chưa có đánh giá" : item.percent + "% đánh giá tích cực";
+                                                <h4>@chuoi</h4>
+                                            }
+                                            <p>
+                                                <h4 class="price-sale">@item.book.GIA ₫</h4>
+                                            </p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!--end itm-->
+                }
+            }
+        </div>
+    </div>
+</div>
+<div>
+    <center>
+        <ul class="pagination P">
+            @{
+                if (dem != 1)
+                {
+
+                    for (int i = 1; i <= dem; i++)
+                    {
+                        string cls = "Pbtn" + i;
+                        if (i == 1)
+                        {
+                            <li class="active" id="@cls"><a href="javascript:void(0);" onclick="changePPage(@i)">@i</a></li>
+                            continue;
+                        }
+                        <li id="@cls"><a href="javascript:void(0);" onclick="changePPage(@i)">@i</a></li>
+
+                    }
+                }
+            }
+        </ul>
+    </center>
+</div>
+
+<style>
+    .crop {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        width: 100%;
+    }
+    .title{
+        margin-top:5px;
+    }
+    row-fluid.row{
+        height:100%;
+    }
+    h4.price-sale {
+        text-align: center;
+        color: black;
+    }
+
+    .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        height: 230px;
+    }
+
+    .itm {
+        border: 1px solid lightgray;
+        margin-bottom: 10px;
+        margin-left: 10px;
+        margin-right: 10px;
+        box-shadow: none;
+        height: 350px;
+    }
+
+        .itm:hover {
+            box-shadow: 3px 3px 3px 3px lightgray;
+            border: 1px solid black;
+        }
+
+    .col-md-2 {
+        width: 22.2222%;
+    }
+
+    a {
+        outline: none;
+        color: #2e2d2d;
+    }
+
+        a:hover {
+            color: black;
+            text-decoration: none;
+        }
+
+    .info {
+        border-top: 1px solid lightgray;
+    }
+</style>

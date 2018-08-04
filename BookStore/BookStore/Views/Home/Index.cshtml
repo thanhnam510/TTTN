@@ -1,0 +1,207 @@
+﻿@model List<BookStore.Models.ProductView>
+@{
+    ViewBag.Title = "Index";
+}
+<img src="~/img/9159a7ba710db49.jpg " alt="sách" style="width:100%;height:333px;margin-bottom: 30px;" />
+<div class="container col-md-12">    
+    <div id="products" class="row list-group">
+            <div class="panel with-nav-tabs panel-info">
+                <div class="panel-heading">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#tab1" data-toggle="tab">Hàng mới</a></li>
+                        <li><a href="#tab2" data-toggle="tab">Đánh giá cao</a></li>
+                    </ul>
+                </div>
+                <div class="panel-body">
+                    <div class="tab-content">
+                        <div class="tab-pane fade in active" id="tab1">
+                            <div class="row-fluid row">
+                                @{
+                                    var b = 0;
+                                    foreach (var item in Model)
+                                    {
+
+                                        b++;
+                                        <div class="itm col-xs-2 col-md-2">
+                                            <div class="product-box-list">
+                                                <div class="product-box-list">
+                                                    <div tpl="" rel="" class="product-item ">
+                                                        <a data-id="@item.book.MA_SACH" data-score="" href="@Url.Action("ProductInfo", "Product", new { maSach = @item.book.MA_SACH })" title="@item.book.TEN_SACH" class="">
+                                                            <span class="image">
+                                                                <img class="product-image img-responsive center" src="@item.book.ANH" alt="">
+                                                            </span>
+                                                            <div class="info crop">
+                                                                <h4>
+                                                                    <span class="title">
+                                                                        @item.book.TEN_SACH.
+                                                                    </span>
+                                                                </h4>
+                                                                @{
+                                                                    string authors = "";
+                                                                    foreach (var tg in item.book.TAC_GIA)
+                                                                    {
+                                                                        authors += tg.TEN_TAC_GIA + " ";
+
+                                                                    }
+                                                                    <p class="author">@authors</p>
+                                                                }
+                                                                @{
+                                                                    string chuoi = item.percent == -1 ? "Chưa có đánh giá" : item.percent + "% đánh giá tích cực";
+                                                                    <h4>@chuoi</h4>
+                                                                }
+                                                                <p>
+                                                                    <h4 class="price-sale">@item.book.GIA₫</h4>
+                                                                </p>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                            if (b == 8)
+                                            {
+                                                break;
+                                            }
+
+                                        }
+                                    }
+                                </div>
+                            <div class="row">
+                                <center>
+                                    <button class="btn-info More" onclick="location.href='@Url.Action("Index", "Products",new {search = "All"})'">Xem thêm</button>
+                                </center>
+                            </div>
+                        </div><!--end row-fluid-->
+                        <div class="tab-pane fade in" id="tab2">
+                            <div class="row-fluid row">
+                                @{
+                                    b = 0;
+                                    List<BookStore.Models.ProductView> list = Model.OrderByDescending(t => t.percent).ToList();
+                                    foreach (var item in list)
+                                    {
+                                        b++;
+                                        <div class="itm col-xs-2 col-md-2">
+                                            <div class="product-box-list">
+                                                <div class="product-box-list">
+                                                    <div tpl="" rel="" class="product-item ">
+                                                        <a data-id="@item.book.MA_SACH" data-score="" href="@Url.Action("ProductInfo", "Product", new { maSach =@item.book.MA_SACH})" title="@item.book.TEN_SACH" class="">
+                                                            <span class="image">
+                                                                <img class="product-image img-responsive center" src="@item.book.ANH" alt="">
+                                                            </span>
+                                                            <div class="info crop">
+                                                                <h4><span class="title">
+                                                                    @item.book.TEN_SACH.
+                                                                </span></h4>
+                                                                @{
+                                                                    string authors = "";
+                                                                    foreach (var tg in item.book.TAC_GIA)
+                                                                    {
+                                                                        authors += tg.TEN_TAC_GIA + " ";
+
+                                                                    }
+                                                                    <p class="author">@authors</p>
+                                                                    {
+                                                                        string chuoi = item.percent == -1 ? "Chưa có đánh giá" : item.percent + "% đánh giá tích cực";
+                                                                        <h4>@chuoi</h4>
+                                                                    }
+                                                                }
+                                                                <p>
+                                                                    <h4 class="price-sale">@item.book.GIA₫</h4>
+                                                                </p>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        if (b == 8)
+                                        {
+                                            break;
+                                        }
+
+                                    } <!--end while-->
+
+                                }
+                            </div>
+                            <div class="row">
+                                <center>
+                                    <button class="btn-info More" onclick="location.href='@Url.Action("Index", "Products",new {search = "Top"})'">Xem thêm</button>
+                                </center>
+                            </div>
+                        </div><!--end row-fluid-->
+                    </div>
+                </div>
+            </div> 
+    </div>
+    </div>
+
+<style>
+    .crop {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        width: 100%;
+    }
+
+    h4.price-sale {
+        text-align: center;
+        color: black;
+    }
+
+    .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        height: 230px;
+    }
+
+    .itm {
+        border: 1px solid lightgray;
+        margin-bottom: 10px;
+        margin-left: 10px;
+        margin-right: 10px;
+        box-shadow: none;
+        height: 350px;
+    }
+        .itm:hover {
+            box-shadow:   5px 5px 5px darkgray;
+            border: 1px solid black;
+        }
+
+    .col-md-2 {
+        width: 23%;
+    }
+
+    a {
+        outline: none;
+        color: #2e2d2d;
+    }
+
+        a:hover {
+            color: black;
+            text-decoration: none;
+        }
+
+    .info {
+        border-top: 1px solid lightgray;
+    }
+    .nav.nav-tabs {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .nav-tabs > li.active > a, 
+    .nav-tabs > li.active > a:hover, 
+    .nav-tabs > li.active > a:focus {
+        border-top:2px solid orange;
+    }
+    .More {
+        color: white;
+        background-color: #29a1da;
+        width: 10%;
+        height: 35px;
+        border-radius: 40px;
+        margin-top: 5px;
+    }
+</style>

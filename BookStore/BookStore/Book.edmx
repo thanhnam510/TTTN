@@ -1,0 +1,439 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="bookModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ADMIN">
+          <Key>
+            <PropertyRef Name="UID" />
+          </Key>
+          <Property Name="UID" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="TK" Type="char" MaxLength="20" Nullable="false" />
+          <Property Name="PASSWORD" Type="char" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NHA_XUAT_BAN">
+          <Key>
+            <PropertyRef Name="MA_NXB" />
+          </Key>
+          <Property Name="MA_NXB" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="TEN_NXB" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SACH">
+          <Key>
+            <PropertyRef Name="MA_SACH" />
+          </Key>
+          <Property Name="MA_SACH" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TEN_SACH" Type="ntext" Nullable="false" />
+          <Property Name="NOI_DUNG" Type="ntext" />
+          <Property Name="ANH" Type="ntext" />
+          <Property Name="GIA" Type="char" MaxLength="20" Nullable="false" />
+          <Property Name="NGAY_BAN" Type="datetime" Nullable="false" />
+          <Property Name="DANH_GIA_TOT" Type="int" />
+          <Property Name="TONG_DANH_GIA" Type="int" />
+        </EntityType>
+        <EntityType Name="SACH_NXB">
+          <Key>
+            <PropertyRef Name="MA_SACH" />
+            <PropertyRef Name="MA_NXB" />
+          </Key>
+          <Property Name="MA_SACH" Type="int" Nullable="false" />
+          <Property Name="MA_NXB" Type="char" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SACH_TAC_GIA">
+          <Key>
+            <PropertyRef Name="MA_SACH" />
+            <PropertyRef Name="MA_TAC_GIA" />
+          </Key>
+          <Property Name="MA_SACH" Type="int" Nullable="false" />
+          <Property Name="MA_TAC_GIA" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SACH_THE_LOAI">
+          <Key>
+            <PropertyRef Name="MA_THE_LOAI" />
+            <PropertyRef Name="MA_SACH" />
+          </Key>
+          <Property Name="MA_THE_LOAI" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="MA_SACH" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TAC_GIA">
+          <Key>
+            <PropertyRef Name="MA_TAC_GIA" />
+          </Key>
+          <Property Name="MA_TAC_GIA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TEN_TAC_GIA" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="THE_LOAI">
+          <Key>
+            <PropertyRef Name="MA_THE_LOAI" />
+          </Key>
+          <Property Name="MA_THE_LOAI" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="TEN_THE_LOAI" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Y_KIEN">
+          <Key>
+            <PropertyRef Name="MA_SACH" />
+            <PropertyRef Name="MA_Y_KIEN" />
+          </Key>
+          <Property Name="MA_SACH" Type="int" Nullable="false" />
+          <Property Name="MA_Y_KIEN" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOI_DUNG" Type="ntext" Nullable="false" />
+          <Property Name="DANH_GIA" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="NGAY" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_SACH_NXB_SACH_NXB_SACH">
+          <End Role="SACH" Type="Self.SACH" Multiplicity="1" />
+          <End Role="SACH_NXB" Type="Self.SACH_NXB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SACH">
+              <PropertyRef Name="MA_SACH" />
+            </Principal>
+            <Dependent Role="SACH_NXB">
+              <PropertyRef Name="MA_SACH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SACH_NXB_SACH_NXB2_NHA_XUAT">
+          <End Role="NHA_XUAT_BAN" Type="Self.NHA_XUAT_BAN" Multiplicity="1" />
+          <End Role="SACH_NXB" Type="Self.SACH_NXB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NHA_XUAT_BAN">
+              <PropertyRef Name="MA_NXB" />
+            </Principal>
+            <Dependent Role="SACH_NXB">
+              <PropertyRef Name="MA_NXB" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SACH_TAC_SACH_TAC__SACH">
+          <End Role="SACH" Type="Self.SACH" Multiplicity="1" />
+          <End Role="SACH_TAC_GIA" Type="Self.SACH_TAC_GIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SACH">
+              <PropertyRef Name="MA_SACH" />
+            </Principal>
+            <Dependent Role="SACH_TAC_GIA">
+              <PropertyRef Name="MA_SACH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SACH_TAC_SACH_TAC__TAC_GIA">
+          <End Role="TAC_GIA" Type="Self.TAC_GIA" Multiplicity="1" />
+          <End Role="SACH_TAC_GIA" Type="Self.SACH_TAC_GIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TAC_GIA">
+              <PropertyRef Name="MA_TAC_GIA" />
+            </Principal>
+            <Dependent Role="SACH_TAC_GIA">
+              <PropertyRef Name="MA_TAC_GIA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SACH_THE_SACH_THE__SACH">
+          <End Role="SACH" Type="Self.SACH" Multiplicity="1" />
+          <End Role="SACH_THE_LOAI" Type="Self.SACH_THE_LOAI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SACH">
+              <PropertyRef Name="MA_SACH" />
+            </Principal>
+            <Dependent Role="SACH_THE_LOAI">
+              <PropertyRef Name="MA_SACH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SACH_THE_SACH_THE__THE_LOAI">
+          <End Role="THE_LOAI" Type="Self.THE_LOAI" Multiplicity="1" />
+          <End Role="SACH_THE_LOAI" Type="Self.SACH_THE_LOAI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="THE_LOAI">
+              <PropertyRef Name="MA_THE_LOAI" />
+            </Principal>
+            <Dependent Role="SACH_THE_LOAI">
+              <PropertyRef Name="MA_THE_LOAI" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Y_KIEN__ANH_GIA_SACH">
+          <End Role="SACH" Type="Self.SACH" Multiplicity="1" />
+          <End Role="Y_KIEN" Type="Self.Y_KIEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SACH">
+              <PropertyRef Name="MA_SACH" />
+            </Principal>
+            <Dependent Role="Y_KIEN">
+              <PropertyRef Name="MA_SACH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="SP_GetBookDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MASACH" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="bookModelStoreContainer">
+          <EntitySet Name="ADMIN" EntityType="Self.ADMIN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NHA_XUAT_BAN" EntityType="Self.NHA_XUAT_BAN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SACH" EntityType="Self.SACH" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SACH_NXB" EntityType="Self.SACH_NXB" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SACH_TAC_GIA" EntityType="Self.SACH_TAC_GIA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SACH_THE_LOAI" EntityType="Self.SACH_THE_LOAI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TAC_GIA" EntityType="Self.TAC_GIA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="THE_LOAI" EntityType="Self.THE_LOAI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Y_KIEN" EntityType="Self.Y_KIEN" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_SACH_NXB_SACH_NXB_SACH" Association="Self.FK_SACH_NXB_SACH_NXB_SACH">
+            <End Role="SACH" EntitySet="SACH" />
+            <End Role="SACH_NXB" EntitySet="SACH_NXB" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SACH_NXB_SACH_NXB2_NHA_XUAT" Association="Self.FK_SACH_NXB_SACH_NXB2_NHA_XUAT">
+            <End Role="NHA_XUAT_BAN" EntitySet="NHA_XUAT_BAN" />
+            <End Role="SACH_NXB" EntitySet="SACH_NXB" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SACH_TAC_SACH_TAC__SACH" Association="Self.FK_SACH_TAC_SACH_TAC__SACH">
+            <End Role="SACH" EntitySet="SACH" />
+            <End Role="SACH_TAC_GIA" EntitySet="SACH_TAC_GIA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SACH_TAC_SACH_TAC__TAC_GIA" Association="Self.FK_SACH_TAC_SACH_TAC__TAC_GIA">
+            <End Role="TAC_GIA" EntitySet="TAC_GIA" />
+            <End Role="SACH_TAC_GIA" EntitySet="SACH_TAC_GIA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SACH_THE_SACH_THE__SACH" Association="Self.FK_SACH_THE_SACH_THE__SACH">
+            <End Role="SACH" EntitySet="SACH" />
+            <End Role="SACH_THE_LOAI" EntitySet="SACH_THE_LOAI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SACH_THE_SACH_THE__THE_LOAI" Association="Self.FK_SACH_THE_SACH_THE__THE_LOAI">
+            <End Role="THE_LOAI" EntitySet="THE_LOAI" />
+            <End Role="SACH_THE_LOAI" EntitySet="SACH_THE_LOAI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Y_KIEN__ANH_GIA_SACH" Association="Self.FK_Y_KIEN__ANH_GIA_SACH">
+            <End Role="SACH" EntitySet="SACH" />
+            <End Role="Y_KIEN" EntitySet="Y_KIEN" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="bookModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ADMIN">
+          <Key>
+            <PropertyRef Name="UID" />
+          </Key>
+          <Property Name="UID" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="TK" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="PASSWORD" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NHA_XUAT_BAN">
+          <Key>
+            <PropertyRef Name="MA_NXB" />
+          </Key>
+          <Property Name="MA_NXB" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="TEN_NXB" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="SACH" Relationship="Self.SACH_NXB" FromRole="NHA_XUAT_BAN" ToRole="SACH" />
+        </EntityType>
+        <EntityType Name="SACH">
+          <Key>
+            <PropertyRef Name="MA_SACH" />
+          </Key>
+          <Property Name="MA_SACH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TEN_SACH" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NOI_DUNG" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ANH" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="GIA" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="NGAY_BAN" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Y_KIEN" Relationship="Self.FK_Y_KIEN__ANH_GIA_SACH" FromRole="SACH" ToRole="Y_KIEN" />
+          <NavigationProperty Name="NHA_XUAT_BAN" Relationship="Self.SACH_NXB" FromRole="SACH" ToRole="NHA_XUAT_BAN" />
+          <NavigationProperty Name="TAC_GIA" Relationship="Self.SACH_TAC_GIA" FromRole="SACH" ToRole="TAC_GIA" />
+          <NavigationProperty Name="THE_LOAI" Relationship="Self.SACH_THE_LOAI" FromRole="SACH" ToRole="THE_LOAI" />
+          <Property Name="DANH_GIA_TOT" Type="Int32" />
+          <Property Name="TONG_DANH_GIA" Type="Int32" />
+        </EntityType>
+        <EntityType Name="TAC_GIA">
+          <Key>
+            <PropertyRef Name="MA_TAC_GIA" />
+          </Key>
+          <Property Name="MA_TAC_GIA" Type="Int32" Nullable="false" />
+          <Property Name="TEN_TAC_GIA" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="SACH" Relationship="Self.SACH_TAC_GIA" FromRole="TAC_GIA" ToRole="SACH" />
+        </EntityType>
+        <EntityType Name="THE_LOAI">
+          <Key>
+            <PropertyRef Name="MA_THE_LOAI" />
+          </Key>
+          <Property Name="MA_THE_LOAI" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="TEN_THE_LOAI" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="SACH" Relationship="Self.SACH_THE_LOAI" FromRole="THE_LOAI" ToRole="SACH" />
+        </EntityType>
+        <EntityType Name="Y_KIEN">
+          <Key>
+            <PropertyRef Name="MA_SACH" />
+            <PropertyRef Name="MA_Y_KIEN" />
+          </Key>
+          <Property Name="MA_SACH" Type="Int32" Nullable="false" />
+          <Property Name="MA_Y_KIEN" Type="Int32" Nullable="false" />
+          <Property Name="NOI_DUNG" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DANH_GIA" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NGAY" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="SACH" Relationship="Self.FK_Y_KIEN__ANH_GIA_SACH" FromRole="Y_KIEN" ToRole="SACH" />
+        </EntityType>
+        <Association Name="FK_Y_KIEN__ANH_GIA_SACH">
+          <End Role="SACH" Type="Self.SACH" Multiplicity="1" />
+          <End Role="Y_KIEN" Type="Self.Y_KIEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SACH">
+              <PropertyRef Name="MA_SACH" />
+            </Principal>
+            <Dependent Role="Y_KIEN">
+              <PropertyRef Name="MA_SACH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SACH_NXB">
+          <End Role="SACH" Type="Self.SACH" Multiplicity="*" />
+          <End Role="NHA_XUAT_BAN" Type="Self.NHA_XUAT_BAN" Multiplicity="*" />
+        </Association>
+        <Association Name="SACH_TAC_GIA">
+          <End Role="SACH" Type="Self.SACH" Multiplicity="*" />
+          <End Role="TAC_GIA" Type="Self.TAC_GIA" Multiplicity="*" />
+        </Association>
+        <Association Name="SACH_THE_LOAI">
+          <End Role="SACH" Type="Self.SACH" Multiplicity="*" />
+          <End Role="THE_LOAI" Type="Self.THE_LOAI" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="booksEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ADMIN" EntityType="Self.ADMIN" />
+          <EntitySet Name="NHA_XUAT_BAN" EntityType="Self.NHA_XUAT_BAN" />
+          <EntitySet Name="SACH" EntityType="Self.SACH" />
+          <EntitySet Name="TAC_GIA" EntityType="Self.TAC_GIA" />
+          <EntitySet Name="THE_LOAI" EntityType="Self.THE_LOAI" />
+          <EntitySet Name="Y_KIEN" EntityType="Self.Y_KIEN" />
+          <AssociationSet Name="FK_Y_KIEN__ANH_GIA_SACH" Association="Self.FK_Y_KIEN__ANH_GIA_SACH">
+            <End Role="SACH" EntitySet="SACH" />
+            <End Role="Y_KIEN" EntitySet="Y_KIEN" />
+          </AssociationSet>
+          <AssociationSet Name="SACH_NXB" Association="Self.SACH_NXB">
+            <End Role="SACH" EntitySet="SACH" />
+            <End Role="NHA_XUAT_BAN" EntitySet="NHA_XUAT_BAN" />
+          </AssociationSet>
+          <AssociationSet Name="SACH_TAC_GIA" Association="Self.SACH_TAC_GIA">
+            <End Role="SACH" EntitySet="SACH" />
+            <End Role="TAC_GIA" EntitySet="TAC_GIA" />
+          </AssociationSet>
+          <AssociationSet Name="SACH_THE_LOAI" Association="Self.SACH_THE_LOAI">
+            <End Role="SACH" EntitySet="SACH" />
+            <End Role="THE_LOAI" EntitySet="THE_LOAI" />
+          </AssociationSet>
+          <FunctionImport Name="SP_GetBookDetail" ReturnType="Collection(String)">
+          <Parameter Name="MASACH" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="bookModelStoreContainer" CdmEntityContainer="booksEntities">
+          <EntitySetMapping Name="ADMIN">
+            <EntityTypeMapping TypeName="bookModel.ADMIN">
+              <MappingFragment StoreEntitySet="ADMIN">
+                <ScalarProperty Name="UID" ColumnName="UID" />
+                <ScalarProperty Name="TK" ColumnName="TK" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NHA_XUAT_BAN">
+            <EntityTypeMapping TypeName="bookModel.NHA_XUAT_BAN">
+              <MappingFragment StoreEntitySet="NHA_XUAT_BAN">
+                <ScalarProperty Name="MA_NXB" ColumnName="MA_NXB" />
+                <ScalarProperty Name="TEN_NXB" ColumnName="TEN_NXB" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SACH">
+            <EntityTypeMapping TypeName="bookModel.SACH">
+              <MappingFragment StoreEntitySet="SACH">
+                <ScalarProperty Name="TONG_DANH_GIA" ColumnName="TONG_DANH_GIA" />
+                <ScalarProperty Name="DANH_GIA_TOT" ColumnName="DANH_GIA_TOT" />
+                <ScalarProperty Name="MA_SACH" ColumnName="MA_SACH" />
+                <ScalarProperty Name="TEN_SACH" ColumnName="TEN_SACH" />
+                <ScalarProperty Name="NOI_DUNG" ColumnName="NOI_DUNG" />
+                <ScalarProperty Name="ANH" ColumnName="ANH" />
+                <ScalarProperty Name="GIA" ColumnName="GIA" />
+                <ScalarProperty Name="NGAY_BAN" ColumnName="NGAY_BAN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TAC_GIA">
+            <EntityTypeMapping TypeName="bookModel.TAC_GIA">
+              <MappingFragment StoreEntitySet="TAC_GIA">
+                <ScalarProperty Name="MA_TAC_GIA" ColumnName="MA_TAC_GIA" />
+                <ScalarProperty Name="TEN_TAC_GIA" ColumnName="TEN_TAC_GIA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="THE_LOAI">
+            <EntityTypeMapping TypeName="bookModel.THE_LOAI">
+              <MappingFragment StoreEntitySet="THE_LOAI">
+                <ScalarProperty Name="MA_THE_LOAI" ColumnName="MA_THE_LOAI" />
+                <ScalarProperty Name="TEN_THE_LOAI" ColumnName="TEN_THE_LOAI" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Y_KIEN">
+            <EntityTypeMapping TypeName="bookModel.Y_KIEN">
+              <MappingFragment StoreEntitySet="Y_KIEN">
+                <ScalarProperty Name="MA_SACH" ColumnName="MA_SACH" />
+                <ScalarProperty Name="MA_Y_KIEN" ColumnName="MA_Y_KIEN" />
+                <ScalarProperty Name="NOI_DUNG" ColumnName="NOI_DUNG" />
+                <ScalarProperty Name="DANH_GIA" ColumnName="DANH_GIA" />
+                <ScalarProperty Name="NGAY" ColumnName="NGAY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="SACH_NXB" TypeName="bookModel.SACH_NXB" StoreEntitySet="SACH_NXB">
+            <EndProperty Name="SACH">
+              <ScalarProperty Name="MA_SACH" ColumnName="MA_SACH" />
+            </EndProperty>
+            <EndProperty Name="NHA_XUAT_BAN">
+              <ScalarProperty Name="MA_NXB" ColumnName="MA_NXB" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="SACH_TAC_GIA" TypeName="bookModel.SACH_TAC_GIA" StoreEntitySet="SACH_TAC_GIA">
+            <EndProperty Name="SACH">
+              <ScalarProperty Name="MA_SACH" ColumnName="MA_SACH" />
+            </EndProperty>
+            <EndProperty Name="TAC_GIA">
+              <ScalarProperty Name="MA_TAC_GIA" ColumnName="MA_TAC_GIA" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="SACH_THE_LOAI" TypeName="bookModel.SACH_THE_LOAI" StoreEntitySet="SACH_THE_LOAI">
+            <EndProperty Name="SACH">
+              <ScalarProperty Name="MA_SACH" ColumnName="MA_SACH" />
+            </EndProperty>
+            <EndProperty Name="THE_LOAI">
+              <ScalarProperty Name="MA_THE_LOAI" ColumnName="MA_THE_LOAI" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="SP_GetBookDetail" FunctionName="bookModel.Store.SP_GetBookDetail" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

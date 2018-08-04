@@ -1,0 +1,72 @@
+﻿@model IEnumerable<BookStore.SACH>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/AdminManager/Views/Shared/_LayoutAdmin.cshtml";
+}
+<h2>Danh sách sách</h2>
+
+<p>
+    @Html.ActionLink("Thêm mới", "Create")
+</p>
+<table class="table" id="bookstable">
+    <tr>
+        <th class="col-lg-1">
+            Ảnh
+        </th>
+        <th class="col-lg-1">
+            Tên sách
+        </th>
+        <th class="col-lg-8">
+            Nội dung
+        </th>
+        <th>
+            Giá
+        </th>
+        <th class="col-lg-1">Ngày</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            <center>
+                <img style="width:100%; height:100%;" src='@item.ANH' />
+            </center>
+        </td>
+        <td>
+            @item.TEN_SACH
+        </td>
+        <td>
+            @{
+                string[] NDs = item.NOI_DUNG.Split('\n');
+                foreach (string ND in NDs)
+                {
+                    <p>@ND</p>
+                }
+            }
+        </td>
+        <td>
+            @item.GIA
+        </td>
+        <td>
+            @item.NGAY_BAN
+        </td>
+        <td>
+            @Html.ActionLink("Sửa", "Update", "HomeAdmin", new { masach = item.MA_SACH }, FormMethod.Get)|
+            @Html.ActionLink("Xóa", "DeleteTour", "HomeAdmin", new { masach = item.MA_SACH }, new { onclick = "return confirm('Bạn có thật sự muốn xóa tour này?');" })
+        </td>
+    </tr>
+    }
+
+</table>
+<style>
+    #bookstable {
+        position: absolute;
+        right: 0;
+        width: 100%;
+    }
+    td, th {
+        border: 1px solid #ddd;
+    }
+    
+</style>

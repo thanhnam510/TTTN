@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/Menu.css" rel="stylesheet" />
+    <link href="~/Content/Home.css" rel="stylesheet" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand", Style = "color:White;" });
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown dropdown-large">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown">Thể loại <b class="caret"></b></a>
+                        <ul class="dropdown-menu dropdown-menu-large row">
+                            <li class="col-md-4">
+                                <ul>
+                                    <li class="dropdown-header">Thể loại </li>
+                                    <li><a href=@Url.Action("Index", "Products",new {search = "Anh văn"})>Anh văn</a></li>
+                                    <li><a href=@Url.Action("Index", "Products",new {search = "Công nghê thông tin"})>Công nghệ</a></li>
+                                    <li><a href=@Url.Action("Index", "Products",new {search = "Du lịch"})>Du lịch</a></li>
+                                    <li><a href=@Url.Action("Index", "Products",new {search = "Giả tưởng"})>Giả tưởng</a></li>
+                                    <li><a href=@Url.Action("Index", "Products",new {search = "Kinh tế"})>Kinh tế</a></li>
+                                </ul>
+                            </li>
+                            <li class="col-md-4">
+                                <ul>
+                                    <li class="dropdown-header"><br /></li>
+                                    <li><a href=@Url.Action("Index", "Products",new {search = "Khoa học"})>Khoa học</a></li>
+                                    <li><a href=@Url.Action("Index", "Products",new {search = "Kĩ năng"})>Kĩ năng</a></li>
+                                    <li><a href=@Url.Action("Index", "Products",new {search = "Lịch sử"})>Lịch sử</a></li>
+                                    <li><a href=@Url.Action("Index", "Products",new {search = "Phiêu lưu"})>Phiêu lưu</a></li>
+                                    <li><a href=@Url.Action("Index", "Products",new {search = "Văn học"})>Văn học</a></li>
+
+                                </ul>
+                            </li>
+                            <li class="col-md-4">
+                                <ul>
+                                    <li class="dropdown-header"><br /></li>
+                                    <li><a href=@Url.Action("Index", "Products",new {search = "Tham khảo"})>Tham khảo</a></li>
+                                    <li><a href=@Url.Action("Index", "Products",new {search = "Thiếu nhi"})>Thiếu nhi</a></li>
+                                    <li><a href=@Url.Action("Index", "Products",new {search = "Tôn giáo"})>Tôn giáo</a></li>
+                                    <li><a href=@Url.Action("Index", "Products",new {search = "Trinh thám"})>Trinh thám</a></li>
+                                    <li><a href=@Url.Action("Index", "Products",new {search = "Truyện tranh"})>Truyện tranh</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="search">
+                        <div class="col-lg-6">
+                            <form action="@Url.Action("generateKeyWord","Products")" id="form">
+                                <label for="search" class="sr-only">Search</label>
+                                <input type="text" placeholder="search" class="search-input" name="search">
+                                <button onclick="search()">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </button>
+                                <select class="type-of-search header-search-input form-control search-select" name="type">
+                                    <option value="name" selected="selected">Theo tên truyện</option>
+                                    <option value="author">Theo tác giả</option>
+                                </select>
+                            </form>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer >
+            <p class="bottom">&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+    <script>
+            function search() {
+            var key = $('#searchinput').val().trim();
+            var type = $('#searchselect').val().trim();
+                var searchString = type == "name" ? key : "1?" + key;
+                $.get($('#form').attr('action'), searchString);
+
+        }
+    </script>
+</body>
+</html>
