@@ -14,10 +14,10 @@ namespace EmoDic
     public partial class frmXtract : Form
     {
         List<string> Terms;
-        List<int> TermValues;
-        private List<int> G = new List<int>();
-        private List<int> N;
-        private List<int> P;
+        List<float> TermValues;
+        private List<float> G = new List<float>();
+        private List<float> N;
+        private List<float> P;
         private List<CamXuc> noidung;
         private List<CamXuc> tongquat;
         private List<CamXuc> tacgia;
@@ -34,11 +34,11 @@ namespace EmoDic
 
         }
 
-        private void createVector(List<int> TermValue)
+        private void createVector(List<float> TermValue)
         {
-            N = new List<int>();
-            P = new List<int>();
-            G = new List<int>();
+            N = new List<float>();
+            P = new List<float>();
+            G = new List<float>();
             foreach (int value in TermValues)
             {
                 if (value == 0)
@@ -89,7 +89,7 @@ namespace EmoDic
             lbrs.Text += "\ncosin(N,G)=" + cosinNG + "\nconsin(P,G)=" + cosinPG;
         }
 
-        private double cosin(List<int> X)
+        private double cosin(List<float> X)
         {
             double cosin;
             double sumPowX = 0; //numeratorX
@@ -161,7 +161,7 @@ namespace EmoDic
             string[] words;
             string[] pharses;
             Terms = new List<string>();
-            TermValues = new List<int>();
+            TermValues = new List<float>();
             if (Program.KetNoi() == 0) return;
             foreach (String sentence in sentences)
             {
@@ -266,7 +266,7 @@ namespace EmoDic
             return ret;
         }
 
-        private int getWeight(string nguNghia,string camxuc)
+        private float getWeight(string nguNghia,string camxuc)
         {
             SqlDataReader myReader = null;
             string strLenh = "exec dbo.SP_LayTrongSo N'" + nguNghia + "',N'" + camxuc + "'";
@@ -278,7 +278,7 @@ namespace EmoDic
             {
                     myReader = sqlcmd.ExecuteReader();
                     myReader.Read();
-                    int weight = myReader.GetInt32(0);
+                    float weight = (float)myReader.GetDouble(0);
                     string khiacanh = myReader.GetString(1);
                     addKhiaCanh(khiacanh, camxuc,weight);
                     myReader.Close();
@@ -291,7 +291,7 @@ namespace EmoDic
             }
         }
 
-        private void addKhiaCanh(string khiacanh,string cx,int trongso)
+        private void addKhiaCanh(string khiacanh,string cx,float trongso)
         {
             switch (khiacanh)
             {

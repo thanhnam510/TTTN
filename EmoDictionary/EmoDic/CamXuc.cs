@@ -9,9 +9,9 @@ namespace EmoDic
     class CamXuc
     {
         public string tu { get; set; }
-        public int trongso { get; set; }
+        public float trongso { get; set; }
 
-        public CamXuc(string tu, int trongso)
+        public CamXuc(string tu, float trongso)
         {
             this.tu = tu;
             this.trongso = trongso;

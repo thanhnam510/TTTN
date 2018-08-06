@@ -89,7 +89,7 @@ namespace EmoDic
             AddNotSeed(txtSeed.Text,dem);
         }
 
-        private int Add(string id,string tuCamXuc,short trongSo,bool hatGiong,string khiacanh)
+        private int Add(string id,string tuCamXuc,float trongSo,bool hatGiong,string khiacanh)
         {
             SqlDataReader myReader;
             int ret =0;
@@ -122,11 +122,11 @@ namespace EmoDic
                     {
                         tong++;
                         string emo = box.Text + " " + seed;
-                        int weight = (int)spnW.Value;
+                        float weight = (float)spnW.Value;
                         dau = weight < 0 ? -1 : 1;
-                        weight += (short.Parse(box.Tag.ToString()))*dau;
+                        weight += (float.Parse(box.Tag.ToString()))*dau;
                         string id = ttCb.SelectedValue.ToString().Trim();
-                        dem += Add(id, emo, (short)weight, false,khiacanh);
+                        dem += Add(id, emo,weight, false,khiacanh);
                     }
                 }
                 foreach (CheckBox box in after)
@@ -146,7 +146,6 @@ namespace EmoDic
             catch { }
             alert.Text = "Thêm thành công"+ dem+"/"+tong;
         }
-
         private void before_CheckBox_CheckedChange(object sender, EventArgs e)
         {
             if (Count(before) == before.Count)
@@ -236,7 +235,7 @@ namespace EmoDic
             if (Program.KetNoi() == 0) return;
             try
             {
-                dem = Add(ttCb.SelectedValue.ToString(), txtSeed.Text, (short)spnW.Value, true,cbKhiaCanh.SelectedItem.ToString());
+                dem = Add(ttCb.SelectedValue.ToString(), txtSeed.Text, (float)spnW.Value, true,cbKhiaCanh.SelectedItem.ToString());
             }
             catch (Exception ex)
             {

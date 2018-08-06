@@ -1667,8 +1667,8 @@ namespace EmoDic.Emo_DictionaryDataSetTableAdapters {
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[DAC_TRUNG_CAM_XUC] ([THUC_THE_CAM_XUC], [HAT_GIONG]) VALUES (@" +
-                "THUC_THE_CAM_XUC, @HAT_GIONG);\r\nSELECT EID, THUC_THE_CAM_XUC, HAT_GIONG FROM DAC" +
-                "_TRUNG_CAM_XUC WHERE (EID = SCOPE_IDENTITY())";
+                "THUC_THE_CAM_XUC, @HAT_GIONG);\nSELECT EID, THUC_THE_CAM_XUC, HAT_GIONG FROM DAC_" +
+                "TRUNG_CAM_XUC WHERE (EID = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@THUC_THE_CAM_XUC", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "THUC_THE_CAM_XUC", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HAT_GIONG", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "HAT_GIONG", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -1992,15 +1992,15 @@ SELECT EID, THUC_THE_CAM_XUC, HAT_GIONG FROM DAC_TRUNG_CAM_XUC WHERE (EID = @EID
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[DAC_TRUNG_NGU_NGHIA] ([ID], [THUC_THE]) VALUES (@ID, @THUC_THE" +
-                ");\r\nSELECT ID, THUC_THE FROM DAC_TRUNG_NGU_NGHIA WHERE (ID = @ID)";
+                ");\nSELECT ID, THUC_THE FROM DAC_TRUNG_NGU_NGHIA WHERE (ID = @ID)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@THUC_THE", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "THUC_THE", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
             this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[DAC_TRUNG_NGU_NGHIA] SET [ID] = @ID, [THUC_THE] = @THUC_THE WHERE (" +
-                "([ID] = @Original_ID) AND ([THUC_THE] = @Original_THUC_THE));\r\nSELECT ID, THUC_T" +
-                "HE FROM DAC_TRUNG_NGU_NGHIA WHERE (ID = @ID)";
+                "([ID] = @Original_ID) AND ([THUC_THE] = @Original_THUC_THE));\nSELECT ID, THUC_TH" +
+                "E FROM DAC_TRUNG_NGU_NGHIA WHERE (ID = @ID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@THUC_THE", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "THUC_THE", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -2336,8 +2336,8 @@ SELECT EID, THUC_THE_CAM_XUC, HAT_GIONG FROM DAC_TRUNG_CAM_XUC WHERE (EID = @EID
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO [TRONG_SO] ([ID], [EID], [TRONG_SO], [KHIA_CANH]) VALUES (@ID, @EID, " +
-                "@TRONG_SO, @KHIA_CANH);\r\nSELECT ID, EID, TRONG_SO, KHIA_CANH FROM TRONG_SO WHERE" +
-                " (EID = @EID) AND (ID = @ID)";
+                "@TRONG_SO, @KHIA_CANH);\nSELECT ID, EID, TRONG_SO, KHIA_CANH FROM TRONG_SO WHERE " +
+                "(EID = @EID) AND (ID = @ID)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@EID", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));

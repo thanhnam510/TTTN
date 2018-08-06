@@ -83,6 +83,12 @@
             this.txtMA = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtTTYN = new System.Windows.Forms.TextBox();
+            this.checkBox12 = new System.Windows.Forms.CheckBox();
+            this.checkBox13 = new System.Windows.Forms.CheckBox();
+            this.checkBox14 = new System.Windows.Forms.CheckBox();
+            this.checkBox15 = new System.Windows.Forms.CheckBox();
+            this.checkBox16 = new System.Windows.Forms.CheckBox();
+            this.checkBox17 = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.aft.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -114,13 +120,13 @@
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(0);
-            this.groupBox1.Size = new System.Drawing.Size(935, 151);
+            this.groupBox1.Size = new System.Drawing.Size(1011, 151);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
             // btnWatch
             // 
-            this.btnWatch.Location = new System.Drawing.Point(790, 45);
+            this.btnWatch.Location = new System.Drawing.Point(837, 44);
             this.btnWatch.Name = "btnWatch";
             this.btnWatch.Size = new System.Drawing.Size(111, 23);
             this.btnWatch.TabIndex = 2;
@@ -130,7 +136,7 @@
             // 
             // btnXtract
             // 
-            this.btnXtract.Location = new System.Drawing.Point(790, 105);
+            this.btnXtract.Location = new System.Drawing.Point(837, 104);
             this.btnXtract.Name = "btnXtract";
             this.btnXtract.Size = new System.Drawing.Size(111, 23);
             this.btnXtract.TabIndex = 3;
@@ -148,9 +154,9 @@
             this.aft.Controls.Add(this.a2);
             this.aft.Controls.Add(this.a1);
             this.aft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.aft.Location = new System.Drawing.Point(445, 14);
+            this.aft.Location = new System.Drawing.Point(593, 14);
             this.aft.Name = "aft";
-            this.aft.Size = new System.Drawing.Size(340, 137);
+            this.aft.Size = new System.Drawing.Size(223, 137);
             this.aft.TabIndex = 6;
             this.aft.TabStop = false;
             this.aft.Text = "Sau";
@@ -176,7 +182,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(3, 17);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(334, 23);
+            this.panel1.Size = new System.Drawing.Size(217, 23);
             this.panel1.TabIndex = 17;
             // 
             // checkAllA
@@ -256,6 +262,12 @@
             // 
             // bf
             // 
+            this.bf.Controls.Add(this.checkBox17);
+            this.bf.Controls.Add(this.checkBox16);
+            this.bf.Controls.Add(this.checkBox15);
+            this.bf.Controls.Add(this.checkBox14);
+            this.bf.Controls.Add(this.checkBox13);
+            this.bf.Controls.Add(this.checkBox12);
             this.bf.Controls.Add(this.checkBox11);
             this.bf.Controls.Add(this.checkBox10);
             this.bf.Controls.Add(this.checkBox9);
@@ -276,7 +288,7 @@
             this.bf.Dock = System.Windows.Forms.DockStyle.Left;
             this.bf.Location = new System.Drawing.Point(0, 14);
             this.bf.Name = "bf";
-            this.bf.Size = new System.Drawing.Size(445, 137);
+            this.bf.Size = new System.Drawing.Size(593, 137);
             this.bf.TabIndex = 5;
             this.bf.TabStop = false;
             this.bf.Text = "Trước";
@@ -290,7 +302,7 @@
             this.checkBox11.Name = "checkBox11";
             this.checkBox11.Size = new System.Drawing.Size(76, 17);
             this.checkBox11.TabIndex = 28;
-            this.checkBox11.Tag = "-1";
+            this.checkBox11.Tag = "-0.5";
             this.checkBox11.Text = "không quá";
             this.checkBox11.UseVisualStyleBackColor = true;
             // 
@@ -316,7 +328,7 @@
             this.checkBox9.Name = "checkBox9";
             this.checkBox9.Size = new System.Drawing.Size(54, 17);
             this.checkBox9.TabIndex = 26;
-            this.checkBox9.Tag = "-1";
+            this.checkBox9.Tag = "-0.25";
             this.checkBox9.Text = "khá là";
             this.checkBox9.UseVisualStyleBackColor = true;
             // 
@@ -407,7 +419,7 @@
             this.checkBox3.Name = "checkBox3";
             this.checkBox3.Size = new System.Drawing.Size(43, 17);
             this.checkBox3.TabIndex = 19;
-            this.checkBox3.Tag = "-1";
+            this.checkBox3.Tag = "-0.25";
             this.checkBox3.Text = "khá";
             this.checkBox3.UseVisualStyleBackColor = true;
             // 
@@ -419,7 +431,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(3, 17);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(439, 23);
+            this.panel2.Size = new System.Drawing.Size(587, 23);
             this.panel2.TabIndex = 18;
             // 
             // checkAllB
@@ -441,7 +453,7 @@
             this.b6.Name = "b6";
             this.b6.Size = new System.Drawing.Size(62, 17);
             this.b6.TabIndex = 7;
-            this.b6.Tag = "2";
+            this.b6.Tag = "1.5";
             this.b6.Text = "hết sức";
             this.b6.UseVisualStyleBackColor = true;
             // 
@@ -467,7 +479,7 @@
             this.b4.Name = "b4";
             this.b4.Size = new System.Drawing.Size(53, 17);
             this.b4.TabIndex = 5;
-            this.b4.Tag = "2";
+            this.b4.Tag = "1.5";
             this.b4.Text = "cực kì";
             this.b4.UseVisualStyleBackColor = true;
             // 
@@ -492,7 +504,7 @@
             this.b2.Location = new System.Drawing.Point(12, 68);
             this.b2.Name = "b2";
             this.b2.Size = new System.Drawing.Size(51, 17);
-            this.b2.TabIndex = 3;
+            this.b2.TabIndex = 1;
             this.b2.Tag = "1";
             this.b2.Text = "rất là";
             this.b2.UseVisualStyleBackColor = true;
@@ -505,7 +517,7 @@
             this.b1.Location = new System.Drawing.Point(12, 46);
             this.b1.Name = "b1";
             this.b1.Size = new System.Drawing.Size(40, 17);
-            this.b1.TabIndex = 2;
+            this.b1.TabIndex = 1;
             this.b1.Tag = "1";
             this.b1.Text = "rất";
             this.b1.UseVisualStyleBackColor = true;
@@ -526,7 +538,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox2.Location = new System.Drawing.Point(0, 151);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(935, 149);
+            this.groupBox2.Size = new System.Drawing.Size(1011, 149);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thêm từ điển";
@@ -600,7 +612,7 @@
             this.spnW.Name = "spnW";
             this.spnW.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.spnW.Properties.Mask.EditMask = "f0";
+            this.spnW.Properties.Mask.EditMask = "f2";
             this.spnW.Size = new System.Drawing.Size(100, 20);
             this.spnW.TabIndex = 7;
             this.spnW.EditValueChanged += new System.EventHandler(this.spinEdit1_EditValueChanged);
@@ -685,7 +697,7 @@
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox3.Location = new System.Drawing.Point(0, 300);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(935, 241);
+            this.groupBox3.Size = new System.Drawing.Size(1011, 241);
             this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Thêm thực thể ý nghĩa";
@@ -732,11 +744,89 @@
             this.txtTTYN.Size = new System.Drawing.Size(375, 21);
             this.txtTTYN.TabIndex = 2;
             // 
+            // checkBox12
+            // 
+            this.checkBox12.AutoSize = true;
+            this.checkBox12.Checked = true;
+            this.checkBox12.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox12.Location = new System.Drawing.Point(309, 43);
+            this.checkBox12.Name = "checkBox12";
+            this.checkBox12.Size = new System.Drawing.Size(96, 17);
+            this.checkBox12.TabIndex = 29;
+            this.checkBox12.Tag = "-1";
+            this.checkBox12.Text = "không có được";
+            this.checkBox12.UseVisualStyleBackColor = true;
+            // 
+            // checkBox13
+            // 
+            this.checkBox13.AutoSize = true;
+            this.checkBox13.Checked = true;
+            this.checkBox13.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox13.Location = new System.Drawing.Point(309, 66);
+            this.checkBox13.Name = "checkBox13";
+            this.checkBox13.Size = new System.Drawing.Size(82, 17);
+            this.checkBox13.TabIndex = 30;
+            this.checkBox13.Tag = "-1";
+            this.checkBox13.Text = "không được";
+            this.checkBox13.UseVisualStyleBackColor = true;
+            // 
+            // checkBox14
+            // 
+            this.checkBox14.AutoSize = true;
+            this.checkBox14.Checked = true;
+            this.checkBox14.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox14.Location = new System.Drawing.Point(309, 90);
+            this.checkBox14.Name = "checkBox14";
+            this.checkBox14.Size = new System.Drawing.Size(78, 17);
+            this.checkBox14.TabIndex = 31;
+            this.checkBox14.Tag = "-0.5";
+            this.checkBox14.Text = "không mấy";
+            this.checkBox14.UseVisualStyleBackColor = true;
+            // 
+            // checkBox15
+            // 
+            this.checkBox15.AutoSize = true;
+            this.checkBox15.Checked = true;
+            this.checkBox15.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox15.Location = new System.Drawing.Point(309, 110);
+            this.checkBox15.Name = "checkBox15";
+            this.checkBox15.Size = new System.Drawing.Size(40, 17);
+            this.checkBox15.TabIndex = 32;
+            this.checkBox15.Tag = "-0.5";
+            this.checkBox15.Text = "hơi";
+            this.checkBox15.UseVisualStyleBackColor = true;
+            // 
+            // checkBox16
+            // 
+            this.checkBox16.AutoSize = true;
+            this.checkBox16.Checked = true;
+            this.checkBox16.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox16.Location = new System.Drawing.Point(426, 66);
+            this.checkBox16.Name = "checkBox16";
+            this.checkBox16.Size = new System.Drawing.Size(57, 17);
+            this.checkBox16.TabIndex = 33;
+            this.checkBox16.Tag = "-0.75";
+            this.checkBox16.Text = "hơi hơi";
+            this.checkBox16.UseVisualStyleBackColor = true;
+            // 
+            // checkBox17
+            // 
+            this.checkBox17.AutoSize = true;
+            this.checkBox17.Checked = true;
+            this.checkBox17.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox17.Location = new System.Drawing.Point(426, 43);
+            this.checkBox17.Name = "checkBox17";
+            this.checkBox17.Size = new System.Drawing.Size(64, 17);
+            this.checkBox17.TabIndex = 34;
+            this.checkBox17.Tag = "2";
+            this.checkBox17.Text = "đặc biết";
+            this.checkBox17.UseVisualStyleBackColor = true;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(935, 485);
+            this.ClientSize = new System.Drawing.Size(1011, 485);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -821,5 +911,11 @@
         private System.Windows.Forms.ComboBox cbKhiaCanh;
         private System.Windows.Forms.CheckBox checkBox11;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.CheckBox checkBox14;
+        private System.Windows.Forms.CheckBox checkBox13;
+        private System.Windows.Forms.CheckBox checkBox12;
+        private System.Windows.Forms.CheckBox checkBox16;
+        private System.Windows.Forms.CheckBox checkBox15;
+        private System.Windows.Forms.CheckBox checkBox17;
     }
 }
