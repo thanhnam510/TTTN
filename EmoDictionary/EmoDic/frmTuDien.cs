@@ -41,9 +41,11 @@ namespace EmoDic
 
         private void btnRefresh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            int current = dAC_TRUNG_CAM_XUCBindingSource.Position;
             this.dAC_TRUNG_NGU_NGHIATableAdapter.Fill(this.edDS.DAC_TRUNG_NGU_NGHIA);
             this.dAC_TRUNG_CAM_XUCTableAdapter.Fill(this.edDS.DAC_TRUNG_CAM_XUC);
             this.tsTA.Fill(this.edDS.TRONG_SO);
+            dAC_TRUNG_CAM_XUCBindingSource.Position = current;
             //this.tuDienCamXucTableAdapter.Fill(this.edDS.TuDienCamXuc);
         }
 

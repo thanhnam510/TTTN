@@ -1,0 +1,92 @@
+@RELATION YKIEN
+
+@ATTRIBUTE tongquat	numeric
+@ATTRIBUTE noidung	numeric
+@ATTRIBUTE tacgia	numeric
+@ATTRIBUTE chatluong	numeric
+@ATTRIBUTE trinhbay	numeric
+@ATTRIBUTE class	{tichcuc,tieucuc,trunglap}
+
+
+@DATA
+2.5,1.75,0,0,0,tichcuc
+0,1	,0,0.5,0,tichcuc
+1,0.75,	0,1,0,tichcuc
+0,2.25,0,0,0,tichcuc
+1,0	,0,1,1,tichcuc
+1.25,0,1.75,0,0,tichcuc
+1.25,0,0,0,0,tichcuc
+0,1,0,0.5,0,tichcuc
+1.5,1,0,0,0,tichcuc
+0,1,0,0,0,tichcuc
+0,1.25,0,0,0,tichcuc
+0,1,-0.5,0,0,tichcuc
+1.5,0.5,0,0,0,tichcuc
+1.75,1.75,0,0,1,tichcuc
+0,1.75,0,1,0,tichcuc
+1,0,0,0,-0.5,tichcuc
+-0.25,1,0,0,0,	tichcuc
+0,1.25,0,0,0,tichcuc
+0.75,1.75,0,0,0,tichcuc
+1,1,0,1,1,tichcuc					
+0,1.75,1.75,-0.75,0,tichcuc
+0,0,0,1,-0.5,tichcuc
+0,1,1.75,1,0,tichcuc
+1.75,0,0,-0.5,1.75,tichcuc
+0,1.5,-0.75,0,0,tichcuc
+0,1.5,0,-1,0,tichcuc
+0,1.5,0,0,0,tichcuc
+1.25,2,0,0,0,tichcuc
+0,0,1,0.5,0,tichcuc
+
+
+0,-2,0,2,0	,trunglap				
+-0.5	,0,	0.5,	0,	0,       trunglap
+0	,0,	0	,0,	0,       trunglap
+0	,1,	0	,-1,0,	trunglap
+0	,0,	0	,0,	0,	trunglap
+1	,0,	-1	,0,	0,	trunglap
+1	,0,	-1	,0,	0,	trunglap
+-0.5	,0,	0.5	,0,	0,	trunglap
+0	,0,	0	,0,	0,	trunglap
+0	,0,	0	,0,	0,	trunglap
+0	,0,	0	,0,	0,	trunglap
+-1.5,	0	,0,	0,	1.5,	trunglap
+-1,	0	,0,	0,	1,	trunglap
+0,0,	0	,0,	0,	trunglap
+0	,0,	0	,0,	0,	trunglap
+0	,0,	0	,0,	0,	trunglap
+0	,0,	0	,0,	0,	trunglap
+0	,0,	0	,0,	0,	trunglap
+0	,0,	0	,0,	0,	trunglap
+0	,0,	0	,0,	0,	trunglap
+0	,0,	0	,0,	0,	trunglap
+0	,1,	0	,-1,0,trunglap
+0,-1,0,1,0,trunglap
+
+0,0,-1,1,0,trunglap
+1,-1,0,0,0,trunglap
+								
+0,-0.5,0,0,-0.5,tieucuc
+-0.75,0,0,0,0,tieucuc
+0,-0.25,0,-1,0,tieucuc
+-1.25,0,0,0,0,tieucuc
+0,-1,0,0,0,tieucuc
+0,-1.5,0,0,0,tieucuc
+-1,-1,0,0,0,tieucuc
+0,-1.25,0,0,0,tieucuc
+0,-1,0,0,0,tieucuc
+-1.25,-2,0,0,0,tieucuc
+-1.25,-1,0,0,0,tieucuc
+0,0,0,0,-1.25,tieucuc
+-1.5,-1	,0,1,0,tieucuc
+0,0.25,0,0,-0.5,tieucuc
+0,0	,-1.5,0,1,tieucuc
+0,0,0,-0.25,0,tieucuc
+0.75,-0.25,-2,0,0, tieucuc
+0,0,0,-0.75,0,tieucuc
+-2,1.75,0,0,0,tieucuc
+-0.75,0,-1.5,0,0,tieucuc
+0,-2,0,0,0,tieucuc
+0,0,-1,-1,0,tieucuc
+

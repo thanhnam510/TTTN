@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTuDien));
-            this.barManager1 = new DevExpress.XtraBars.BarManager();
+            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.btnXoa = new DevExpress.XtraBars.BarButtonItem();
             this.btnRefresh = new DevExpress.XtraBars.BarButtonItem();
@@ -38,18 +39,15 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.edDS = new EmoDic.Emo_DictionaryDataSet();
-            this.tsBS = new System.Windows.Forms.BindingSource();
+            this.tsBS = new System.Windows.Forms.BindingSource(this.components);
             this.tsTA = new EmoDic.Emo_DictionaryDataSetTableAdapters.TRONG_SOTableAdapter();
             this.tableAdapterManager = new EmoDic.Emo_DictionaryDataSetTableAdapters.TableAdapterManager();
-            this.dAC_TRUNG_CAM_XUCBindingSource = new System.Windows.Forms.BindingSource();
+            this.dAC_TRUNG_CAM_XUCBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dAC_TRUNG_CAM_XUCTableAdapter = new EmoDic.Emo_DictionaryDataSetTableAdapters.DAC_TRUNG_CAM_XUCTableAdapter();
-            this.dAC_TRUNG_NGU_NGHIABindingSource = new System.Windows.Forms.BindingSource();
+            this.dAC_TRUNG_NGU_NGHIABindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dAC_TRUNG_NGU_NGHIATableAdapter = new EmoDic.Emo_DictionaryDataSetTableAdapters.DAC_TRUNG_NGU_NGHIATableAdapter();
             this.dAC_TRUNG_CAM_XUCGridControl = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.colEID = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colTHUC_THE_CAM_XUC = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colHAT_GIONG = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.edDS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tsBS)).BeginInit();
@@ -186,39 +184,14 @@
             this.dAC_TRUNG_CAM_XUCGridControl.MenuManager = this.barManager1;
             this.dAC_TRUNG_CAM_XUCGridControl.Name = "dAC_TRUNG_CAM_XUCGridControl";
             this.dAC_TRUNG_CAM_XUCGridControl.Size = new System.Drawing.Size(819, 361);
-            this.dAC_TRUNG_CAM_XUCGridControl.TabIndex = 17;
+            this.dAC_TRUNG_CAM_XUCGridControl.TabIndex = 25;
             this.dAC_TRUNG_CAM_XUCGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
             // 
             // gridView1
             // 
-            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.colEID,
-            this.colTHUC_THE_CAM_XUC,
-            this.colHAT_GIONG});
             this.gridView1.GridControl = this.dAC_TRUNG_CAM_XUCGridControl;
             this.gridView1.Name = "gridView1";
-            // 
-            // colEID
-            // 
-            this.colEID.FieldName = "EID";
-            this.colEID.Name = "colEID";
-            this.colEID.Visible = true;
-            this.colEID.VisibleIndex = 0;
-            // 
-            // colTHUC_THE_CAM_XUC
-            // 
-            this.colTHUC_THE_CAM_XUC.FieldName = "THUC_THE_CAM_XUC";
-            this.colTHUC_THE_CAM_XUC.Name = "colTHUC_THE_CAM_XUC";
-            this.colTHUC_THE_CAM_XUC.Visible = true;
-            this.colTHUC_THE_CAM_XUC.VisibleIndex = 1;
-            // 
-            // colHAT_GIONG
-            // 
-            this.colHAT_GIONG.FieldName = "HAT_GIONG";
-            this.colHAT_GIONG.Name = "colHAT_GIONG";
-            this.colHAT_GIONG.Visible = true;
-            this.colHAT_GIONG.VisibleIndex = 2;
             // 
             // frmTuDien
             // 
@@ -265,8 +238,5 @@
         private Emo_DictionaryDataSetTableAdapters.DAC_TRUNG_NGU_NGHIATableAdapter dAC_TRUNG_NGU_NGHIATableAdapter;
         private DevExpress.XtraGrid.GridControl dAC_TRUNG_CAM_XUCGridControl;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
-        private DevExpress.XtraGrid.Columns.GridColumn colEID;
-        private DevExpress.XtraGrid.Columns.GridColumn colTHUC_THE_CAM_XUC;
-        private DevExpress.XtraGrid.Columns.GridColumn colHAT_GIONG;
     }
 }

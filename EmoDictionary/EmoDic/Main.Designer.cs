@@ -43,6 +43,12 @@
             this.a2 = new System.Windows.Forms.CheckBox();
             this.a1 = new System.Windows.Forms.CheckBox();
             this.bf = new System.Windows.Forms.GroupBox();
+            this.checkBox17 = new System.Windows.Forms.CheckBox();
+            this.checkBox16 = new System.Windows.Forms.CheckBox();
+            this.checkBox15 = new System.Windows.Forms.CheckBox();
+            this.checkBox14 = new System.Windows.Forms.CheckBox();
+            this.checkBox13 = new System.Windows.Forms.CheckBox();
+            this.checkBox12 = new System.Windows.Forms.CheckBox();
             this.checkBox11 = new System.Windows.Forms.CheckBox();
             this.checkBox10 = new System.Windows.Forms.CheckBox();
             this.checkBox9 = new System.Windows.Forms.CheckBox();
@@ -83,12 +89,9 @@
             this.txtMA = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtTTYN = new System.Windows.Forms.TextBox();
-            this.checkBox12 = new System.Windows.Forms.CheckBox();
-            this.checkBox13 = new System.Windows.Forms.CheckBox();
-            this.checkBox14 = new System.Windows.Forms.CheckBox();
-            this.checkBox15 = new System.Windows.Forms.CheckBox();
-            this.checkBox16 = new System.Windows.Forms.CheckBox();
-            this.checkBox17 = new System.Windows.Forms.CheckBox();
+            this.checkBox18 = new System.Windows.Forms.CheckBox();
+            this.checkBox19 = new System.Windows.Forms.CheckBox();
+            this.checkBox20 = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.aft.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -170,7 +173,7 @@
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(44, 17);
             this.checkBox1.TabIndex = 18;
-            this.checkBox1.Tag = "1";
+            this.checkBox1.Tag = "0,25";
             this.checkBox1.Text = "quá";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
@@ -204,7 +207,7 @@
             this.a5.Name = "a5";
             this.a5.Size = new System.Drawing.Size(62, 17);
             this.a5.TabIndex = 16;
-            this.a5.Tag = "2";
+            this.a5.Tag = "1,25";
             this.a5.Text = "hết sảy";
             this.a5.UseVisualStyleBackColor = true;
             // 
@@ -217,7 +220,7 @@
             this.a4.Name = "a4";
             this.a4.Size = new System.Drawing.Size(61, 17);
             this.a4.TabIndex = 15;
-            this.a4.Tag = "1";
+            this.a4.Tag = "0,5";
             this.a4.Text = "lắm lắm";
             this.a4.UseVisualStyleBackColor = true;
             // 
@@ -230,7 +233,7 @@
             this.a3.Name = "a3";
             this.a3.Size = new System.Drawing.Size(62, 17);
             this.a3.TabIndex = 14;
-            this.a3.Tag = "2";
+            this.a3.Tag = "1,25";
             this.a3.Text = "hết sức";
             this.a3.UseVisualStyleBackColor = true;
             // 
@@ -243,7 +246,7 @@
             this.a2.Name = "a2";
             this.a2.Size = new System.Drawing.Size(57, 17);
             this.a2.TabIndex = 13;
-            this.a2.Tag = "1";
+            this.a2.Tag = "1,25";
             this.a2.Text = "cực kỳ";
             this.a2.UseVisualStyleBackColor = true;
             // 
@@ -262,6 +265,9 @@
             // 
             // bf
             // 
+            this.bf.Controls.Add(this.checkBox20);
+            this.bf.Controls.Add(this.checkBox19);
+            this.bf.Controls.Add(this.checkBox18);
             this.bf.Controls.Add(this.checkBox17);
             this.bf.Controls.Add(this.checkBox16);
             this.bf.Controls.Add(this.checkBox15);
@@ -293,6 +299,84 @@
             this.bf.TabStop = false;
             this.bf.Text = "Trước";
             // 
+            // checkBox17
+            // 
+            this.checkBox17.AutoSize = true;
+            this.checkBox17.Checked = true;
+            this.checkBox17.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox17.Location = new System.Drawing.Point(426, 43);
+            this.checkBox17.Name = "checkBox17";
+            this.checkBox17.Size = new System.Drawing.Size(64, 17);
+            this.checkBox17.TabIndex = 34;
+            this.checkBox17.Tag = "1,5";
+            this.checkBox17.Text = "đặc biệt";
+            this.checkBox17.UseVisualStyleBackColor = true;
+            // 
+            // checkBox16
+            // 
+            this.checkBox16.AutoSize = true;
+            this.checkBox16.Checked = true;
+            this.checkBox16.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox16.Location = new System.Drawing.Point(426, 66);
+            this.checkBox16.Name = "checkBox16";
+            this.checkBox16.Size = new System.Drawing.Size(50, 17);
+            this.checkBox16.TabIndex = 33;
+            this.checkBox16.Tag = "-1";
+            this.checkBox16.Text = "chưa";
+            this.checkBox16.UseVisualStyleBackColor = true;
+            // 
+            // checkBox15
+            // 
+            this.checkBox15.AutoSize = true;
+            this.checkBox15.Checked = true;
+            this.checkBox15.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox15.Location = new System.Drawing.Point(309, 110);
+            this.checkBox15.Name = "checkBox15";
+            this.checkBox15.Size = new System.Drawing.Size(40, 17);
+            this.checkBox15.TabIndex = 32;
+            this.checkBox15.Tag = "-0,5";
+            this.checkBox15.Text = "hơi";
+            this.checkBox15.UseVisualStyleBackColor = true;
+            // 
+            // checkBox14
+            // 
+            this.checkBox14.AutoSize = true;
+            this.checkBox14.Checked = true;
+            this.checkBox14.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox14.Location = new System.Drawing.Point(309, 90);
+            this.checkBox14.Name = "checkBox14";
+            this.checkBox14.Size = new System.Drawing.Size(78, 17);
+            this.checkBox14.TabIndex = 31;
+            this.checkBox14.Tag = "-0,75";
+            this.checkBox14.Text = "không mấy";
+            this.checkBox14.UseVisualStyleBackColor = true;
+            // 
+            // checkBox13
+            // 
+            this.checkBox13.AutoSize = true;
+            this.checkBox13.Checked = true;
+            this.checkBox13.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox13.Location = new System.Drawing.Point(309, 66);
+            this.checkBox13.Name = "checkBox13";
+            this.checkBox13.Size = new System.Drawing.Size(82, 17);
+            this.checkBox13.TabIndex = 30;
+            this.checkBox13.Tag = "-1";
+            this.checkBox13.Text = "không được";
+            this.checkBox13.UseVisualStyleBackColor = true;
+            // 
+            // checkBox12
+            // 
+            this.checkBox12.AutoSize = true;
+            this.checkBox12.Checked = true;
+            this.checkBox12.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox12.Location = new System.Drawing.Point(309, 43);
+            this.checkBox12.Name = "checkBox12";
+            this.checkBox12.Size = new System.Drawing.Size(96, 17);
+            this.checkBox12.TabIndex = 29;
+            this.checkBox12.Tag = "-1";
+            this.checkBox12.Text = "không có được";
+            this.checkBox12.UseVisualStyleBackColor = true;
+            // 
             // checkBox11
             // 
             this.checkBox11.AutoSize = true;
@@ -302,7 +386,7 @@
             this.checkBox11.Name = "checkBox11";
             this.checkBox11.Size = new System.Drawing.Size(76, 17);
             this.checkBox11.TabIndex = 28;
-            this.checkBox11.Tag = "-0.5";
+            this.checkBox11.Tag = "-0,5";
             this.checkBox11.Text = "không quá";
             this.checkBox11.UseVisualStyleBackColor = true;
             // 
@@ -328,7 +412,7 @@
             this.checkBox9.Name = "checkBox9";
             this.checkBox9.Size = new System.Drawing.Size(54, 17);
             this.checkBox9.TabIndex = 26;
-            this.checkBox9.Tag = "-0.25";
+            this.checkBox9.Tag = "-0,25";
             this.checkBox9.Text = "khá là";
             this.checkBox9.UseVisualStyleBackColor = true;
             // 
@@ -341,7 +425,7 @@
             this.checkBox8.Name = "checkBox8";
             this.checkBox8.Size = new System.Drawing.Size(45, 17);
             this.checkBox8.TabIndex = 25;
-            this.checkBox8.Tag = "2";
+            this.checkBox8.Tag = "1,5";
             this.checkBox8.Text = "siêu";
             this.checkBox8.UseVisualStyleBackColor = true;
             // 
@@ -419,7 +503,7 @@
             this.checkBox3.Name = "checkBox3";
             this.checkBox3.Size = new System.Drawing.Size(43, 17);
             this.checkBox3.TabIndex = 19;
-            this.checkBox3.Tag = "-0.25";
+            this.checkBox3.Tag = "-0,25";
             this.checkBox3.Text = "khá";
             this.checkBox3.UseVisualStyleBackColor = true;
             // 
@@ -453,7 +537,7 @@
             this.b6.Name = "b6";
             this.b6.Size = new System.Drawing.Size(62, 17);
             this.b6.TabIndex = 7;
-            this.b6.Tag = "1.5";
+            this.b6.Tag = "1,25";
             this.b6.Text = "hết sức";
             this.b6.UseVisualStyleBackColor = true;
             // 
@@ -466,7 +550,7 @@
             this.b5.Name = "b5";
             this.b5.Size = new System.Drawing.Size(44, 17);
             this.b5.TabIndex = 6;
-            this.b5.Tag = "1";
+            this.b5.Tag = "0,25";
             this.b5.Text = "quá";
             this.b5.UseVisualStyleBackColor = true;
             // 
@@ -479,7 +563,7 @@
             this.b4.Name = "b4";
             this.b4.Size = new System.Drawing.Size(53, 17);
             this.b4.TabIndex = 5;
-            this.b4.Tag = "1.5";
+            this.b4.Tag = "1,25";
             this.b4.Text = "cực kì";
             this.b4.UseVisualStyleBackColor = true;
             // 
@@ -505,7 +589,7 @@
             this.b2.Name = "b2";
             this.b2.Size = new System.Drawing.Size(51, 17);
             this.b2.TabIndex = 1;
-            this.b2.Tag = "1";
+            this.b2.Tag = "0,75";
             this.b2.Text = "rất là";
             this.b2.UseVisualStyleBackColor = true;
             // 
@@ -517,8 +601,8 @@
             this.b1.Location = new System.Drawing.Point(12, 46);
             this.b1.Name = "b1";
             this.b1.Size = new System.Drawing.Size(40, 17);
-            this.b1.TabIndex = 1;
-            this.b1.Tag = "1";
+            this.b1.TabIndex = 0;
+            this.b1.Tag = "0,75";
             this.b1.Text = "rất";
             this.b1.UseVisualStyleBackColor = true;
             // 
@@ -744,83 +828,44 @@
             this.txtTTYN.Size = new System.Drawing.Size(375, 21);
             this.txtTTYN.TabIndex = 2;
             // 
-            // checkBox12
+            // checkBox18
             // 
-            this.checkBox12.AutoSize = true;
-            this.checkBox12.Checked = true;
-            this.checkBox12.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox12.Location = new System.Drawing.Point(309, 43);
-            this.checkBox12.Name = "checkBox12";
-            this.checkBox12.Size = new System.Drawing.Size(96, 17);
-            this.checkBox12.TabIndex = 29;
-            this.checkBox12.Tag = "-1";
-            this.checkBox12.Text = "không có được";
-            this.checkBox12.UseVisualStyleBackColor = true;
+            this.checkBox18.AutoSize = true;
+            this.checkBox18.Checked = true;
+            this.checkBox18.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox18.Location = new System.Drawing.Point(426, 89);
+            this.checkBox18.Name = "checkBox18";
+            this.checkBox18.Size = new System.Drawing.Size(77, 17);
+            this.checkBox18.TabIndex = 35;
+            this.checkBox18.Tag = "-1";
+            this.checkBox18.Text = "chưa được";
+            this.checkBox18.UseVisualStyleBackColor = true;
             // 
-            // checkBox13
+            // checkBox19
             // 
-            this.checkBox13.AutoSize = true;
-            this.checkBox13.Checked = true;
-            this.checkBox13.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox13.Location = new System.Drawing.Point(309, 66);
-            this.checkBox13.Name = "checkBox13";
-            this.checkBox13.Size = new System.Drawing.Size(82, 17);
-            this.checkBox13.TabIndex = 30;
-            this.checkBox13.Tag = "-1";
-            this.checkBox13.Text = "không được";
-            this.checkBox13.UseVisualStyleBackColor = true;
+            this.checkBox19.AutoSize = true;
+            this.checkBox19.Checked = true;
+            this.checkBox19.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox19.Location = new System.Drawing.Point(426, 110);
+            this.checkBox19.Name = "checkBox19";
+            this.checkBox19.Size = new System.Drawing.Size(50, 17);
+            this.checkBox19.TabIndex = 36;
+            this.checkBox19.Tag = "1";
+            this.checkBox19.Text = "đáng";
+            this.checkBox19.UseVisualStyleBackColor = true;
             // 
-            // checkBox14
+            // checkBox20
             // 
-            this.checkBox14.AutoSize = true;
-            this.checkBox14.Checked = true;
-            this.checkBox14.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox14.Location = new System.Drawing.Point(309, 90);
-            this.checkBox14.Name = "checkBox14";
-            this.checkBox14.Size = new System.Drawing.Size(78, 17);
-            this.checkBox14.TabIndex = 31;
-            this.checkBox14.Tag = "-0.5";
-            this.checkBox14.Text = "không mấy";
-            this.checkBox14.UseVisualStyleBackColor = true;
-            // 
-            // checkBox15
-            // 
-            this.checkBox15.AutoSize = true;
-            this.checkBox15.Checked = true;
-            this.checkBox15.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox15.Location = new System.Drawing.Point(309, 110);
-            this.checkBox15.Name = "checkBox15";
-            this.checkBox15.Size = new System.Drawing.Size(40, 17);
-            this.checkBox15.TabIndex = 32;
-            this.checkBox15.Tag = "-0.5";
-            this.checkBox15.Text = "hơi";
-            this.checkBox15.UseVisualStyleBackColor = true;
-            // 
-            // checkBox16
-            // 
-            this.checkBox16.AutoSize = true;
-            this.checkBox16.Checked = true;
-            this.checkBox16.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox16.Location = new System.Drawing.Point(426, 66);
-            this.checkBox16.Name = "checkBox16";
-            this.checkBox16.Size = new System.Drawing.Size(57, 17);
-            this.checkBox16.TabIndex = 33;
-            this.checkBox16.Tag = "-0.75";
-            this.checkBox16.Text = "hơi hơi";
-            this.checkBox16.UseVisualStyleBackColor = true;
-            // 
-            // checkBox17
-            // 
-            this.checkBox17.AutoSize = true;
-            this.checkBox17.Checked = true;
-            this.checkBox17.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox17.Location = new System.Drawing.Point(426, 43);
-            this.checkBox17.Name = "checkBox17";
-            this.checkBox17.Size = new System.Drawing.Size(64, 17);
-            this.checkBox17.TabIndex = 34;
-            this.checkBox17.Tag = "2";
-            this.checkBox17.Text = "đặc biết";
-            this.checkBox17.UseVisualStyleBackColor = true;
+            this.checkBox20.AutoSize = true;
+            this.checkBox20.Checked = true;
+            this.checkBox20.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox20.Location = new System.Drawing.Point(518, 43);
+            this.checkBox20.Name = "checkBox20";
+            this.checkBox20.Size = new System.Drawing.Size(67, 17);
+            this.checkBox20.TabIndex = 37;
+            this.checkBox20.Tag = "1,5";
+            this.checkBox20.Text = "rất đáng";
+            this.checkBox20.UseVisualStyleBackColor = true;
             // 
             // Main
             // 
@@ -917,5 +962,8 @@
         private System.Windows.Forms.CheckBox checkBox16;
         private System.Windows.Forms.CheckBox checkBox15;
         private System.Windows.Forms.CheckBox checkBox17;
+        private System.Windows.Forms.CheckBox checkBox18;
+        private System.Windows.Forms.CheckBox checkBox20;
+        private System.Windows.Forms.CheckBox checkBox19;
     }
 }

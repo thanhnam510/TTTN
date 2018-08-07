@@ -85,15 +85,16 @@ namespace EmoDic
                 return;
             }
             if (Program.KetNoi() == 0) return;
-            dem = Add(ttCb.SelectedValue.ToString(), txtSeed.Text, (short)spnW.Value, false,khiacanh);
-            AddNotSeed(txtSeed.Text,dem);
+            dem = Update(ttCb.SelectedValue.ToString(), txtSeed.Text, (double)spnW.Value, false,khiacanh);
+            UpdateNotSeed(txtSeed.Text,dem);
         }
 
-        private int Add(string id,string tuCamXuc,float trongSo,bool hatGiong,string khiacanh)
+        private int Add(string id, string tuCamXuc, double trongSo,bool hatGiong,string khiacanh)
         {
             SqlDataReader myReader;
             int ret =0;
-            string strLenh = "exec [dbo].[SP_Them] N'" + id + "',N'" + tuCamXuc + "'," + trongSo + "," + hatGiong+",N'"+khiacanh+"'";
+            string trongso = trongSo.ToString().Replace(",", ".");
+            string strLenh = "exec [dbo].[SP_Them] N'" + id + "',N'" + tuCamXuc + "'," + trongso +"," + hatGiong+",N'"+khiacanh+"'";
             try
             {
                 myReader = Program.ExecSqlDataReader(strLenh);
@@ -107,7 +108,65 @@ namespace EmoDic
             }
             return ret;
         }
+        private int Update(string id, string tuCamXuc, double trongSo, bool hatGiong, string khiacanh)
+        {
+            SqlDataReader myReader;
+            int ret = 0;
+            string trongso = trongSo.ToString().Replace(",", ".");
+            string strLenh = "exec [dbo].[SP_Sua] N'" + id + "',N'" + tuCamXuc + "'," + trongso + "," + hatGiong + ",N'" + khiacanh + "'";
+            try
+            {
+                myReader = Program.ExecSqlDataReader(strLenh);
+                myReader.Read();
+                ret = myReader.GetInt32(0);
+                myReader.Close();
+            }
+            catch (Exception ex)
+            {
+                //  MessageBox.Show(ex.Message);
+            }
+            return ret;
 
+        }
+        private void UpdateNotSeed(string seed, int d)
+        {
+            int tong = 1;
+            int dem = d;
+            int dau = 1;
+            string khiacanh = cbKhiaCanh.SelectedItem.ToString();
+            try
+            {
+                foreach (CheckBox box in before)
+                {
+                    if (box.Checked)
+                    {
+                        tong++;
+                        string emo = box.Text + " " + seed;
+                        double weight = (double)spnW.Value;
+                        dau = weight < 0 ? -1 : 1;
+                        weight += (Double.Parse(box.Tag.ToString())) * dau;
+                        string a = box.Tag.ToString();
+                        string id = ttCb.SelectedValue.ToString().Trim();
+                        dem += Update(id, emo, (float)weight, false, khiacanh);
+                    }
+                }
+                foreach (CheckBox box in after)
+                {
+                    if (box.Checked)
+                    {
+                        tong++;
+                        string emo = seed + " " + box.Text;
+                        double weight = (double)spnW.Value;
+                        dau = weight < 0 ? -1 : 1;
+                        weight += (Double.Parse(box.Tag.ToString())) * dau;
+                        string id = ttCb.SelectedValue.ToString().Trim();
+                        dem += Update(id, emo, weight, false, khiacanh);
+                    }
+                }
+            }
+            catch { }
+            alert.Text = "Sửa thành công" + dem + "/" + tong;
+        }
         private void AddNotSeed(string seed, int d)
         {
             int tong = 1;
@@ -122,11 +181,12 @@ namespace EmoDic
                     {
                         tong++;
                         string emo = box.Text + " " + seed;
-                        float weight = (float)spnW.Value;
+                        double weight = (double)spnW.Value;
                         dau = weight < 0 ? -1 : 1;
-                        weight += (float.Parse(box.Tag.ToString()))*dau;
+                        weight += (Double.Parse(box.Tag.ToString()))*dau;
+                        string a = box.Tag.ToString();
                         string id = ttCb.SelectedValue.ToString().Trim();
-                        dem += Add(id, emo,weight, false,khiacanh);
+                        dem += Add(id, emo,(float)weight, false,khiacanh);
                     }
                 }
                 foreach (CheckBox box in after)
@@ -135,11 +195,11 @@ namespace EmoDic
                     {
                         tong++;
                         string emo = seed + " " + box.Text;
-                        int weight = (int)spnW.Value;
+                        double weight = (double)spnW.Value;
                         dau = weight < 0 ? -1 : 1;
-                        weight += (short.Parse(box.Tag.ToString())) * dau;
+                        weight += (Double.Parse(box.Tag.ToString())) * dau;
                         string id = ttCb.SelectedValue.ToString().Trim();
-                        dem += Add(id, emo, (short)weight, false,khiacanh);
+                        dem += Add(id, emo, weight, false,khiacanh);
                     }
                 }
             }

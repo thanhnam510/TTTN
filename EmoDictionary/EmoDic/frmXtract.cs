@@ -39,7 +39,7 @@ namespace EmoDic
             N = new List<float>();
             P = new List<float>();
             G = new List<float>();
-            foreach (int value in TermValues)
+            foreach (float value in TermValues)
             {
                 if (value == 0)
                 {
@@ -97,8 +97,8 @@ namespace EmoDic
             double denominator = 0;
             for (int i = 0; i < G.Count; i++)
             {
-                sumPowX += (int)Math.Pow(X[i], 2);
-                sumPowG += (int)Math.Pow(G[i], 2);
+                sumPowX += Math.Pow(X[i], 2);
+                sumPowG += Math.Pow(G[i], 2);
             }
             denominator = Math.Sqrt(sumPowX) * Math.Sqrt(sumPowG);
             cosin = denominator == 0 ? 0 : (sumPowX / denominator);
@@ -156,7 +156,7 @@ namespace EmoDic
             tongquat = new List<CamXuc>();
             trinhbay = new List<CamXuc>();
             string[] sentences_Separators = { ".", "!", "?", "...", "\n" };
-            string[] phrases_Separators = { ",", ";","và", "với", "thì","mà","hoặc","nhưng","vì","tuy","vậy"};
+            string[] phrases_Separators = { ",", ";","và", "với","mà","hoặc","nhưng","vì","tuy","vậy"};
             string[] sentences = txtA.Text.Split(sentences_Separators, StringSplitOptions.RemoveEmptyEntries);
             string[] words;
             string[] pharses;
@@ -197,9 +197,9 @@ namespace EmoDic
                                 temp2.Add(Term);
                                 if (temp.Count != 0 && isStart)
                                 {
-                                        getWeightWONguNghia(temp);
-                                        temp = new List<string>();
-                                    
+                                    getWeightWONguNghia(temp);
+                                    temp = new List<string>();
+
                                 }
                             }
                             if (start == 0) // khong con de rut trich
@@ -224,19 +224,34 @@ namespace EmoDic
                     }
                     if (temp.Count != 0 && temp2.Count != 0)
                     {
-                        string NN = temp2[temp2.Count - 1];
-                        Terms.Add(NN);
-                        TermValues.Add(-999);
-                        foreach (string t in temp)
+                        for (int i = temp2.Count - 1; i >= 0; i--)
                         {
-                            // lấy trọng số của các từ cảm xúc của ngữ nghĩa vừa tìm được
-                            TermValues.Add(getWeight(NN, t));
-                            // thêm từ cảm xúc vào mảng các cụm từ
-                            Terms.Add(t.Trim());
+                            string NN = temp2[i];
+                            int j = 0;
+                            while (temp.Count !=0 && j<temp.Count)
+                            {
+                                
+                                string t = temp[j];
+                                float ts = getWeight(NN, t);
+                                if (ts == -999)
+                                {
+                                    j++;
+                                    continue;
+                                }
+                                // lấy trọng số của các từ cảm xúc của ngữ nghĩa vừa tìm được
+                                TermValues.Add(ts);
+                                // thêm từ cảm xúc vào mảng các cụm từ
+                                Terms.Add(t.Trim());
+                                temp.RemoveAt(j);
+                                j = 0;
+                                Terms.Add(NN);
+                                TermValues.Add(-999);
+                            }
                         }
                         temp = new List<string>();
                         temp2 = new List<string>();
-                    }
+                    
+                }
 
                 }
                 getWeightWONguNghia(temp);
@@ -315,5 +330,12 @@ namespace EmoDic
             }
         }
 
+        private void mcBtn_Click(object sender, EventArgs e)
+        {
+            Xtract();
+            DuLieuChuanHoa dl = new DuLieuChuanHoa(tongquat, noidung, tacgia, chatluong, trinhbay);
+            label1.Text = dl.TQ + " | " + dl.ND + " | " + dl.TG + " | " + dl.CL + " | " + dl.TB;
+            label1.Text += "\n "+ dl.evaluate();
+        }
     }
 }
