@@ -30,8 +30,18 @@ namespace BookStore
         public virtual DbSet<DAC_TRUNG_CAM_XUC> DAC_TRUNG_CAM_XUC { get; set; }
         public virtual DbSet<DAC_TRUNG_NGU_NGHIA> DAC_TRUNG_NGU_NGHIA { get; set; }
         public virtual DbSet<TRONG_SO> TRONG_SO { get; set; }
+   
     
-        public virtual ObjectResult<Nullable<int>> SP_LayTrongSo(string thuc_the_y_nghia, string thuc_the_cam_xuc)
+        public virtual ObjectResult<Nullable<int>> SP_TimKiem(string term)
+        {
+            var termParameter = term != null ?
+                new ObjectParameter("Term", term) :
+                new ObjectParameter("Term", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("SP_TimKiem", termParameter);
+        }
+    
+        public virtual ObjectResult<SP_LayTrongSo1_Result> SP_LayTrongSo(string thuc_the_y_nghia, string thuc_the_cam_xuc)
         {
             var thuc_the_y_nghiaParameter = thuc_the_y_nghia != null ?
                 new ObjectParameter("Thuc_the_y_nghia", thuc_the_y_nghia) :
@@ -41,16 +51,7 @@ namespace BookStore
                 new ObjectParameter("Thuc_the_cam_xuc", thuc_the_cam_xuc) :
                 new ObjectParameter("Thuc_the_cam_xuc", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("SP_LayTrongSo", thuc_the_y_nghiaParameter, thuc_the_cam_xucParameter);
-        }
-    
-        public virtual ObjectResult<Nullable<int>> SP_TimKiem(string term)
-        {
-            var termParameter = term != null ?
-                new ObjectParameter("Term", term) :
-                new ObjectParameter("Term", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("SP_TimKiem", termParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_LayTrongSo1_Result>("SP_LayTrongSo1", thuc_the_y_nghiaParameter, thuc_the_cam_xucParameter);
         }
     }
 }

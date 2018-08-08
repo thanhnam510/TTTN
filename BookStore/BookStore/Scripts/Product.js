@@ -1,5 +1,4 @@
-﻿//function sendComment() {
-$('#btnSend').click(function () {
+﻿function sendComment() {
     var ND = $('#cmt').val();
     if (ND === "" || ND === null) {
         alert("Không được bỏ trống");
@@ -24,8 +23,7 @@ $('#btnSend').click(function () {
             alert(response.responseText);
         }
     });
-});
-
+}
 
 function changePPage(number) {
     var previous = $('.P>li.active').index() +1;
@@ -33,6 +31,8 @@ function changePPage(number) {
     $('.p' + number).removeClass("hidden");
     $('#Pbtn' + previous).removeClass("active");
     $('#Pbtn' + number).addClass("active");
+    var top = $('center').position().top;
+    $(window).scrollTop(top);
 }
 function changeNPage(number) {
     var previous = $('.N>li.active').index() + 1;

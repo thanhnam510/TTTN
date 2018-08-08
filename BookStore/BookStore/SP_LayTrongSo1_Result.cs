@@ -10,16 +10,10 @@
 namespace BookStore
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class TRONG_SO
+    public partial class SP_LayTrongSo1_Result
     {
-        public string ID { get; set; }
-        public long EID { get; set; }
-        public int TRONG_SO1 { get; set; }
+        public double TRONG_SO { get; set; }
         public string KHIA_CANH { get; set; }
-    
-        public virtual DAC_TRUNG_CAM_XUC DAC_TRUNG_CAM_XUC { get; set; }
-        public virtual DAC_TRUNG_NGU_NGHIA DAC_TRUNG_NGU_NGHIA { get; set; }
     }
 }

@@ -8,10 +8,15 @@ namespace BookStore.Models
     public class XtractModule
     {
         List<string> Terms;
-        List<int> TermValues;
-        private List<int> G = new List<int>();
-        private List<int> N;
-        private List<int> P;
+        List<float> TermValues;
+        private List<float> G = new List<float>();
+        private List<float> N;
+        private List<float> P;
+        private List<CamXuc> noidung;
+        private List<CamXuc> tongquat;
+        private List<CamXuc> tacgia;
+        private List<CamXuc> trinhbay;
+        private List<CamXuc> chatluong;
         private string tong_quat = "Sách";
 
         private void Xtract_Load(object sender, EventArgs e)
@@ -21,10 +26,10 @@ namespace BookStore.Models
 
         private void createVector()
         {
-            N = new List<int>();
-            P = new List<int>();
-            G = new List<int>();
-            foreach (int value in TermValues)
+            N = new List<float>();
+            P = new List<float>();
+            G = new List<float>();
+            foreach (float value in TermValues)
             {
                 if (value == 0)
                 {
@@ -66,7 +71,7 @@ namespace BookStore.Models
             }
         }
 
-        private double cosin(List<int> X)
+        private double cosin(List<float> X)
         {
             double cosin;
             double sumPowX = 0; //numeratorX
@@ -74,8 +79,8 @@ namespace BookStore.Models
             double denominator = 0;
             for (int i = 0; i < G.Count; i++)
             {
-                sumPowX += (int)Math.Pow(X[i], 2);
-                sumPowG += (int)Math.Pow(G[i], 2);
+                sumPowX += Math.Pow(X[i], 2);
+                sumPowG += Math.Pow(G[i], 2);
             }
             denominator = Math.Sqrt(sumPowX) * Math.Sqrt(sumPowG);
             cosin = denominator == 0 ? 0 : (sumPowX / denominator);
@@ -85,13 +90,18 @@ namespace BookStore.Models
 
         public void Xtract(string vanBan)
         {
+            noidung = new List<CamXuc>();
+            tacgia = new List<CamXuc>();
+            chatluong = new List<CamXuc>();
+            tongquat = new List<CamXuc>();
+            trinhbay = new List<CamXuc>();
             string[] sentences_Separators = { ".", "!", "?", "...", "\n" };
-            string[] phrases_Separators = { ",", ";", "và", "với", "thì","nhưng"};
+            string[] phrases_Separators = { ",", ";", "và", "với", "mà", "hoặc", "nhưng", "vì", "tuy", "vậy" };
             string[] sentences = vanBan.Split(sentences_Separators, StringSplitOptions.RemoveEmptyEntries);
             string[] words;
             string[] pharses;
             Terms = new List<string>();
-            TermValues = new List<int>();
+            TermValues = new List<float>();
             foreach (String sentence in sentences)
             {
                 pharses = sentence.Split(phrases_Separators, StringSplitOptions.RemoveEmptyEntries);
@@ -160,15 +170,29 @@ namespace BookStore.Models
                     }
                     if (temp.Count != 0 && temp2.Count != 0)
                     {
-                        string NN = temp2[temp2.Count - 1];
-                        Terms.Add(NN);
-                        TermValues.Add(-999);
-                        foreach (string t in temp)
+                        for (int i = temp2.Count - 1; i >= 0; i--)
                         {
-                            // lấy trọng số của các từ cảm xúc của ngữ nghĩa vừa tìm được
-                            TermValues.Add(getWeight(NN, t));
-                            // thêm từ cảm xúc vào mảng các cụm từ
-                            Terms.Add(t);
+                            string NN = temp2[i];
+                            int j = 0;
+                            while (temp.Count != 0 && j < temp.Count)
+                            {
+
+                                string t = temp[j];
+                                float ts = getWeight(NN, t);
+                                if (ts == -999)
+                                {
+                                    j++;
+                                    continue;
+                                }
+                                // lấy trọng số của các từ cảm xúc của ngữ nghĩa vừa tìm được
+                                TermValues.Add(ts);
+                                // thêm từ cảm xúc vào mảng các cụm từ
+                                Terms.Add(t.Trim());
+                                temp.RemoveAt(j);
+                                j = 0;
+                                Terms.Add(NN);
+                                TermValues.Add(-999);
+                            }
                         }
                         temp = new List<string>();
                         temp2 = new List<string>();
@@ -229,24 +253,51 @@ namespace BookStore.Models
             return result;
         }
 
-        private int getWeight(string nguNghia, string camxuc)
+        private float getWeight(string nguNghia, string camxuc)
         {
             
-            int weight;
             try
             {
                 using (var db = new Emo_DictionaryEntities())
                 {
-
-                    weight = db.SP_LayTrongSo(nguNghia, camxuc).FirstOrDefault().Value;
+                    var a = db.SP_LayTrongSo(nguNghia, camxuc).FirstOrDefault();
+                    string khiacanh = a.KHIA_CANH;
+                    float weight;
+                    weight = (float)a.TRONG_SO;
+                    addKhiaCanh(khiacanh, camxuc, weight);
                     return weight;
                 }
             }
-            catch
+            catch (Exception ex)
             {
                 return -999;
             }
         }
 
+        private void addKhiaCanh(string khiacanh, string cx, float trongso)
+        {
+            switch (khiacanh)
+            {
+                case "Nội dung":
+                    noidung.Add(new CamXuc(cx, trongso));
+                    break;
+                case "Tác giả":
+                    tacgia.Add(new CamXuc(cx, trongso));
+                    break;
+                case "Chất lượng":
+                    chatluong.Add(new CamXuc(cx, trongso));
+                    break;
+                case "Tổng quát":
+                    tongquat.Add(new CamXuc(cx, trongso));
+                    break;
+                case "Trình bày":
+                    trinhbay.Add(new CamXuc(cx, trongso));
+                    break;
+                default:
+                    break;
+            }
+        }
     }
-}
+
+    }
+

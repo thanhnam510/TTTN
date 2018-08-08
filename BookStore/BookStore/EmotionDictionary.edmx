@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Emo_DictionaryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Emo_DictionaryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="DAC_TRUNG_CAM_XUC">
           <Key>
             <PropertyRef Name="EID" />
@@ -27,7 +27,8 @@
           </Key>
           <Property Name="ID" Type="char" MaxLength="5" Nullable="false" />
           <Property Name="EID" Type="bigint" Nullable="false" />
-          <Property Name="TRONG_SO" Type="int" Nullable="false" />
+          <Property Name="TRONG_SO" Type="float" Nullable="false" />
+          <Property Name="KHIA_CANH" Type="nvarchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <Association Name="FK_TRONG_SO_CO_DAC_TRUN">
           <End Role="DAC_TRUNG_CAM_XUC" Type="Self.DAC_TRUNG_CAM_XUC" Multiplicity="1" />
@@ -73,8 +74,7 @@
             <End Role="TRONG_SO" EntitySet="TRONG_SO" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Emo_DictionaryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -105,6 +105,7 @@
           <Property Name="TRONG_SO1" Type="Int32" Nullable="false" />
           <NavigationProperty Name="DAC_TRUNG_CAM_XUC" Relationship="Self.FK_TRONG_SO_CO_DAC_TRUN" FromRole="TRONG_SO" ToRole="DAC_TRUNG_CAM_XUC" />
           <NavigationProperty Name="DAC_TRUNG_NGU_NGHIA" Relationship="Self.FK_TRONG_SO_CO1_DAC_TRUN" FromRole="TRONG_SO" ToRole="DAC_TRUNG_NGU_NGHIA" />
+          <Property Name="KHIA_CANH" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_TRONG_SO_CO_DAC_TRUN">
           <End Role="DAC_TRUNG_CAM_XUC" Type="Self.DAC_TRUNG_CAM_XUC" Multiplicity="1" />
@@ -147,9 +148,17 @@
             <Parameter Name="Thuc_the_cam_xuc" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SP_TimKiem" ReturnType="Collection(Int32)">
-            <Parameter Name="Term" Mode="In" Type="String" />
+          <Parameter Name="Term" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_LayTrongSo1" ReturnType="Collection(Emo_DictionaryModel.SP_LayTrongSo1_Result)">
+            <Parameter Name="Thuc_the_y_nghia" Mode="In" Type="String" />
+            <Parameter Name="Thuc_the_cam_xuc" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
+        <ComplexType Name="SP_LayTrongSo1_Result">
+          <Property Type="Double" Name="TRONG_SO" Nullable="false" />
+          <Property Type="String" Name="KHIA_CANH" Nullable="false" MaxLength="20" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -176,14 +185,22 @@
           <EntitySetMapping Name="TRONG_SO">
             <EntityTypeMapping TypeName="Emo_DictionaryModel.TRONG_SO">
               <MappingFragment StoreEntitySet="TRONG_SO">
+                <ScalarProperty Name="KHIA_CANH" ColumnName="KHIA_CANH" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="EID" ColumnName="EID" />
                 <ScalarProperty Name="TRONG_SO1" ColumnName="TRONG_SO" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="SP_LayTrongSo" FunctionName="Emo_DictionaryModel.Store.SP_LayTrongSo" />
           <FunctionImportMapping FunctionImportName="SP_TimKiem" FunctionName="Emo_DictionaryModel.Store.SP_TimKiem" />
+          <FunctionImportMapping FunctionImportName="SP_LayTrongSo1" FunctionName="Emo_DictionaryModel.Store.SP_LayTrongSo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Emo_DictionaryModel.SP_LayTrongSo1_Result">
+                <ScalarProperty Name="TRONG_SO" ColumnName="TRONG_SO" />
+                <ScalarProperty Name="KHIA_CANH" ColumnName="KHIA_CANH" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
